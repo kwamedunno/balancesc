@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Auth\LoginController@showLogin')->name('show.login');
+Route::post('/', 'Auth\LoginController@login')->name('process.login');
+Route::get('/dashboard','PagesController@showDashboard')->name('show.dashboard');
