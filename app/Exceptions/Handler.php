@@ -3,8 +3,9 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Arr;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -33,7 +34,7 @@ class Handler extends ExceptionHandler
         //         break;
         // }
 
-        return redirect()->guest(route('staff.login'));
+        return redirect()->guest(route('show.login'));
     }
     /**
      * A list of the exception types that are not reported.

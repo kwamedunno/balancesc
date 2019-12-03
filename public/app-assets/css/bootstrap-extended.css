@@ -243,8 +243,12 @@ pre code {
   border-left : none;
 }
 
-.table th, .table td {
+.table th{
   padding : 0.75rem 2rem;
+}
+
+.table td{
+  padding : 0.4rem 2rem;
 }
 
 .table.table-xl th, .table.table-xl td {
@@ -2022,7 +2026,7 @@ body.vertical-layout.menu-open .main-menu .navigation .navigation-header .la-ell
   margin-top : 1rem;
 }
 .pagination .page-link {
-  color : #00BCD4;
+  color : #da3832;
   border : 1px solid #BABFC7;
 }
 

@@ -13,4 +13,10 @@
 
 Route::get('/', 'Auth\LoginController@showLogin')->name('show.login');
 Route::post('/', 'Auth\LoginController@login')->name('process.login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/dashboard','PagesController@showDashboard')->name('show.dashboard');
+Route::get('/departments','DepartmentController@showDepartment')->name('show.departments');
+Route::get('/staff','StaffController@showStaff')->name('show.staff');
+Route::post('/staff','StaffController@addStaff')->name('add.staff');
+
+

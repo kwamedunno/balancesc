@@ -27,8 +27,8 @@ class LoginController extends Controller
             ->with('message', 'Invalid login credentials');
     }
 
-
     public function logout(){
-
+        Auth::guard('staff')->logout();
+        return redirect(route('show.login'));
     }
 }
