@@ -83,32 +83,30 @@
                             </div>
                         </div>
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="type">Department</label>
-                                        <select class="form-control" name='department' id="department" style='border-radius:7px;' required>
-                                            <option value=''>Select Department</option>
-                                            @for ($i = 0; $i < sizeof($departments); $i++)
-                                                <option value="{{ $departments[$i]['id'] }}">{{ $departments[$i]['description'] }}</option>
-                                            @endfor
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="type">Role</label>
-                                            <select class="form-control" name='role' id="role" style='border-radius:7px;' required>
-                                                <option value=''>Select Role</option>
-                                                @for ($i = 0; $i < sizeof($roles); $i++)
-                                                <option value="{{ $roles[$i]['id'] }}">{{ $roles[$i]['description'] }}</option>
-                                            @endfor
-                                            </select>
-                                        </div>
-                                    
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="type">Department</label>
+                                    <select class="form-control" name='department' id="department" style='border-radius:7px;' required>
+                                        <option value=''>Select Department</option>
+                                        @for ($i = 0; $i < sizeof($departments); $i++)
+                                            <option value="{{ $departments[$i]['id'] }}">{{ $departments[$i]['description'] }}</option>
+                                        @endfor
+                                    </select>
                                 </div>
                             </div>
-                        
-                        
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="type">Role</label>
+                                        <select class="form-control" name='role' id="role" style='border-radius:7px;' required>
+                                            <option value=''>Select Role</option>
+                                            @for ($i = 0; $i < sizeof($roles); $i++)
+                                            <option value="{{ $roles[$i]['id'] }}">{{ $roles[$i]['description'] }}</option>
+                                        @endfor
+                                        </select>
+                                    </div>
+                                
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn danger btn-outline-danger" data-dismiss="modal">Close</button>
