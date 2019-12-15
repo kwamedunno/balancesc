@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScoreCardMetricsTable extends Migration
+class CreateScoreCardMeasures extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateScoreCardMetricsTable extends Migration
      */
     public function up()
     {
-        Schema::create('score_card_metrics', function (Blueprint $table) {
+        Schema::create('score_card_measures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('metric');
             $table->String('measure');
-            $table->double('actual');
-            $table->double('target');
-            $table->integer('weight');
+            $table->String('objective');
             $table->timestamp('created_at')->useCurrent(); 
             $table->timestamp('updated_at')->useCurrent();
         });
@@ -32,6 +29,6 @@ class CreateScoreCardMetricsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('score_card_metrics');
+        Schema::dropIfExists('score_card_measures');
     }
 }

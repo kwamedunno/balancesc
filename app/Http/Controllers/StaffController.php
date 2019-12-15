@@ -50,8 +50,7 @@ class StaffController extends Controller
         $staff->department = $request->department;
 
         // $password = rand(1000, 9999);
-        $password = 1234;
-        $staff->password = Hash::make($password);
+        $staff->password = Hash::make($request->password);
 
         $staff->save();
         

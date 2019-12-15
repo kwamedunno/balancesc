@@ -63,9 +63,9 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="department">Department Name</label>
+                                    <label for="department">Name</label>
                                     <input id="description" name="description" class="form-control" placeholder="Enter department name" type="text" required>
                                 </div>
                             </div>

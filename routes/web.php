@@ -15,7 +15,10 @@ Route::get('/', 'Auth\LoginController@showLogin')->name('show.login');
 Route::post('/', 'Auth\LoginController@login')->name('process.login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/dashboard','PagesController@showDashboard')->name('show.dashboard');
+Route::get('/scorecards','ScorecardsController@showScoreCards')->name('show.scorecards');
+Route::get('/scorecards/create','ScorecardsController@showCreateScoreCard')->name('show.create.scorecard');
+Route::get('/scorecards/view/{id}','ScorecardsController@showViewScoreCard')->name('show.view.scorecard');
+
 
 Route::get('/departments','DepartmentController@showDepartment')->name('show.departments');
 Route::post('/departments','DepartmentController@addDepartment')->name('add.department');

@@ -78,7 +78,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input id="email" name="email" class="form-control" placeholder="Enter staff name" type="email" required>
+                                    <input id="email" name="email" class="form-control" placeholder="Enter staff email" type="email" required>
                                 </div>
                             </div>
                         </div>
@@ -105,6 +105,14 @@
                                         </select>
                                     </div>
                                 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input id="password" name="password" class="form-control" placeholder="Enter staff password" type="text" required>
+                                </div>
                             </div>
                         </div>
                     </div>
