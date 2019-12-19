@@ -16,7 +16,8 @@ class ScoreCardsTableSeeder extends Seeder
 
             'id'=> '1',
             'staff'=>'1',
-            'period'=>'11-2019'
+            'period'=>'11-2019',
+            'last_updated_by'=>'1'
 
         ]);
     }

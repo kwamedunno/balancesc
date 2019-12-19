@@ -6,11 +6,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-5" style="margin-top: 10px;">
-                    <h5 class="card-title">View Score Card</h5>
+                <div class="col-md-9" style="margin-top: 10px;">
+                <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
                 </div>
-                <div class="col-md-7" style="text-align: right; margin-bottom: 5px;">
-                    <div class="btn btn-info" data-toggle="modal" data-target="#default">Save <i class="la la-disc"></i></div>
+                <div class="col-md-3" style="text-align: right; margin-bottom: 5px;">
+                    <form action="{{ route('save.scorecard', $scorecard['id']) }}" method="post">
+                    <button class="btn btn-success" type = "submit">Save <i class="la la-disc"></i></button>
                 </div>
             </div>
             @if(session()->has('success'))
@@ -31,62 +32,25 @@
                                     <th>Measure</th>
                                     <th>Metric</th>
                                     <th>Actual</th>
-                                    <th>Target</th> 
-                                    <th>Weight</th><dl></dl>
+                                    <th>Target</th>
+                                    <th>Weight %</th>
+                                    <th>Rating %</th>
+                                    
+                                    
                                 </tr>
                             </thead>
-                            <tbody>
-                                    @for($i=0; $i<sizeof($objectives); $i++) 
-                                    <tr style="background-color:#343a40; color:#fff !important;">
-                                            <td colspan="5"><h4 style="color:#fff !important;">{{ $objectives[$i]['actual']['description'] }}</h4></td>
-                                            
-                                        @for($j=0; $j<sizeof($objectives[$i]['measures']); $j++) 
-                                            <tr >
-                                                <td><h6 style="margin-left: 20px;">{{ $objectives[$i]['measures'][$j]['actual']['description'] }}</h6></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <tr>
-                                                @for($k=0; $k<sizeof($objectives[$i]['measures'][$j]['metrics']); $k++) 
-                                                    
-                                                        <td></td>
-                                                        <td>{{ $objectives[$i]['measures'][$j]['metrics'][$k]['actual']['description'] }}</td>
-                                                        
-                                                            {{-- @for($l=0; $l<sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']); $l++ ) 
-                                                                <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['description'] }}</td>
-                                                                <td><input style="height: 20px;" class="form-control" type="text" required></td>
-                                                                <td><input style="height: 20px; width: 100px;" class="form-control" type="text" required></td>
-                                                                <tr><td></td><td></td>
-                                                            @endfor
-                                                            </tr> --}}
-                                                        {{-- @for($l=0; $l<sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']); $l++ ) 
-                                                            <tr>
-                                                                <td></td>       
-                                                                <td></td>
-                                                                <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['description'] }}</td>
-                                                                <td><input style="height: 20px;" class="form-control" type="text" required></td>
-                                                                <td><input style="height: 20px; width: 100px;" class="form-control" type="text" required></td>
-                                                            </tr>
-                                                        @endfor --}}
-                                                        
-                                                @endfor
-                                                </tr>
-                                            </tr>
-                                        @endfor
-                                    </tr>
-
-                                @endfor
-                            </tbody>
-                            
-                            {{-- <tbody> 
+                            <tbody> 
+                                    @csrf
+                                    <input type="hidden" name="scorecard_id" value="{{ $scorecard['id'] }}">
                                     @for($i=0; $i<sizeof($objectives); $i++) 
                                         <tr style="background-color:#343a40; color:#fff !important;">
-                                                <td colspan="5"><h4 style="color:#fff !important;">{{ $objectives[$i]['description'] }}</h4></td>
-                                                
+                                            <td colspan="7"><h4 style="color:#fff !important;">{{ $objectives[$i]['actual']['description'] }}</h4></td>
+                                            
                                             @for($j=0; $j<sizeof($objectives[$i]['objectives']); $j++) 
                                                 <tr >
-                                                    <td><h6 style="margin-left: 20px;">{{ $objectives[$i]['objectives'][$j]['description'] }}</h6></td>
+                                                    <td><h6 style="margin-left: 20px;">{{ $objectives[$i]['objectives'][$j]['actual']['description'] }}</h6></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -95,33 +59,45 @@
                                                     @for($k=0; $k<sizeof($objectives[$i]['objectives'][$j]['measures']); $k++) 
                                                         
                                                             <td></td>
-                                                            <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['description'] }}</td>
+                                                            <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['actual']['description'] }}</td>
                                                             
-                                                                @for($l=0; $l<sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']); $l++ ) 
-                                                                    <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['description'] }}</td>
-                                                                    <td><input style="height: 20px;" class="form-control" type="text" required></td>
-                                                                    <td><input style="height: 20px; width: 100px;" class="form-control" type="text" required></td>
+                                                            @for($l=0; $l<sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']); $l++ ) 
+                                                                <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['actual']['description'] }}</td>
+                                                                <td><input style="height: 20px; min-width: 100px;" class="form-control" name = "metric_{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['id'] }}" value="{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['score'] }}" type="text" required></td>
+
+                                                                    <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['target'] }}</td>
+                                                                    <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['weight'] }}</td>
+                                                                    
+
+                                                                    <td>
+                                                                        @if($objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['target']!=0)
+                                                                            {{ round(($objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['score'] * $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['weight']) / $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['target'], 2) }}
+                                                                        @else
+                                                                            N/A
+                                                                        @endif
+                                                                    </td>
+
+                                                                
+                                                                @if ($l != sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']) - 1)
                                                                     <tr><td></td><td></td>
-                                                                @endfor
-                                                                </tr>
-                                                            {{-- @for($l=0; $l<sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']); $l++ ) 
-                                                                <tr>
-                                                                    <td></td>       
-                                                                    <td></td>
-                                                                    <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['description'] }}</td>
-                                                                    <td><input style="height: 20px;" class="form-control" type="text" required></td>
-                                                                    <td><input style="height: 20px; width: 100px;" class="form-control" type="text" required></td>
-                                                                </tr>
-                                                            @endfor -}}
+                                                                @endif
+                                                                
+                                                            @endfor
+                                                            </tr>
+                                                            
                                                             
                                                     @endfor
                                                     </tr>
                                                 </tr>
                                             @endfor
                                         </tr>
-    
+
                                     @endfor
-                                </tbody> --}}
+                                        <tr style="background-color:#343a40; color:#fff !important;">
+                                            <td colspan="7" style="text-align: right; font-weight: 800"><h5 style="color:#fff;">Total Score:<b> {{ round($scorecard['total_score'], 2) }} %</b></h5></td>
+                                        </tr>
+                                </form>
+                            </tbody>
                             <tfoot>
                             </tfoot>
                         </table>
@@ -130,35 +106,4 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel1">Add Department</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('add.department') }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="department">Department Name</label>
-                                    <input id="description" name="description" class="form-control" placeholder="Enter department name" type="text" required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn danger btn-outline-danger" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn success btn-outline-success">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 @endsection

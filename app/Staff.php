@@ -17,4 +17,6 @@ class Staff extends Authenticatable
     public function department(){
         return $this->hasOne('App\Department', 'id', 'department' );
     }
+
+
 }

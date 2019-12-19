@@ -16,8 +16,9 @@ class CreateScoreCardMetricsTable extends Migration
         Schema::create('score_card_metrics', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('metric');
+            $table->String('scorecard');
             $table->String('measure');
-            $table->double('actual');
+            $table->double('score');
             $table->double('target');
             $table->integer('weight');
             $table->timestamp('created_at')->useCurrent(); 

@@ -10,9 +10,11 @@
                 <div class="col-md-5" style="margin-top: 10px;">
                     <h5 class="card-title">Score Cards</h5>
                 </div>
+                @if((Auth::user()->role)<=2)
                 <div class="col-md-7" style="text-align: right; margin-bottom: 5px;">
                     <a href="{{ route('show.create.scorecard') }}"><button class="btn btn-info" data-toggle="modal" data-target="#default">Add Score Card <i class="la la-plus"></i></button></a>
                 </div>
+                @endif
             </div>
             @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible mb-2" style="color: #fff !important;" role="alert">
@@ -32,6 +34,7 @@
                                     <th>Staff Name</th>
                                     <th>Staff Department</th>
                                     <th>Period</th>
+                                    <th>Last Updated By</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -42,6 +45,7 @@
                                         <td>{{ $scorecards[$i]['staff']['name'] }}</td> 
                                         <td>{{ $scorecards[$i]['staff']['department']['description'] }}</td> 
                                         <td>{{ $scorecards[$i]['period'] }}</td> 
+                                        <td>{{ $scorecards[$i]['last_updated_by']['name'] }} at {{ $scorecards[$i]['updated_at'] }}</td> 
                                         <td><a href="{{ route('show.view.scorecard', $scorecards[$i]['id']) }}"><button class="btn btn-info" style="padding: 0.3rem 0.5rem;"><i class="la la-eye"></i></button></td></a>
                                     </tr>
                                 @endfor

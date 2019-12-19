@@ -9,11 +9,12 @@ class ScoreCardMetricsTableSeeder extends CsvSeeder
 		$this->table = 'score_card_metrics';
         $this->filename = base_path().'/database/seeds/csvs/score_card_metrics.csv';
         $this->mapping = [
-            0 => 'metric',
-            1 => 'measure',
-            2 => 'actual',
-            3 => 'target',
-            4 => 'weight',
+			0 => 'metric',
+			1 => 'scorecard',
+            2 => 'measure',
+            3 => 'score',
+            4 => 'target',
+            5 => 'weight',
            
         ];
 	}

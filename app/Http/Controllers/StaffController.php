@@ -57,4 +57,8 @@ class StaffController extends Controller
         return redirect()->route('show.staff')
             ->with('success', 'Staff inserted successfully.');
     }
+
+    public function showExample(){
+        return view('scorecard.example');
+    }
 }

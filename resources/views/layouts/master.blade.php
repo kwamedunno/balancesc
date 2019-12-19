@@ -58,9 +58,7 @@
             <div class="navbar-container container center-layout">
                 <div class="collapse navbar-collapse" id="navbar-mobile">
                     <ul class="nav navbar-nav mr-auto float-left">
-                        <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs d-lg-block d-md-block d-none" href="#"><i class="ft-menu"></i></a></li>
-                        
-                        
+                        <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs d-lg-block d-md-block d-none" href="#"><i class="ft-menu"></i></a></li> 
                     </ul>
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">{{ Auth::user()->name }}</span><span class="avatar avatar-online"><img src="{{asset('app-assets/images/icons/user_icon.png')}}" alt="avatar"><i></i></span></a>
@@ -77,19 +75,20 @@
 
 
     <!-- BEGIN: Main Menu-->
-
-    <div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-dark navbar-without-dd-arrow navbar-shadow" role="navigation" data-menu="menu-wrapper">
-        <div class="navbar-container main-menu-content container center-layout justify-content-center" data-menu="menu-container">
-            <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="dropdown nav-item" data-menu=""><a class="nav-link" href="{{ route('show.scorecards') }}" data-toggle=""><i class="material-icons">chrome_reader_mode</i><span>Score Cards</span></a>
-                </li>
-                <li class="dropdown nav-item" data-menu=""><a class="nav-link" href="{{ route('show.staff') }}" data-toggle=""><i class="material-icons">people</i><span>Staff</span></a>
-                </li>
-                <li class="dropdown nav-item" data-menu="dropdown"><a class="nav-link" href="{{ route('show.departments') }}" data-toggle=""><i class="material-icons">view_comfy</i><span>Departments</span></a>
-                </li>
-            </ul>
+        <div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-dark navbar-without-dd-arrow navbar-shadow" role="navigation" data-menu="menu-wrapper">
+            <div class="navbar-container main-menu-content container center-layout justify-content-center" data-menu="menu-container">
+                <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+                    <li class="dropdown nav-item" data-menu=""><a class="nav-link" href="{{ route('show.scorecards') }}" data-toggle=""><i class="material-icons">chrome_reader_mode</i><span>Score Cards</span></a>
+                    </li>
+                    @if(Auth::user()->role<=2)
+                    <li class="dropdown nav-item" data-menu=""><a class="nav-link" href="{{ route('show.staff') }}" data-toggle=""><i class="material-icons">people</i><span>Staff</span></a>
+                    </li>
+                    <li class="dropdown nav-item" data-menu="dropdown"><a class="nav-link" href="{{ route('show.departments') }}" data-toggle=""><i class="material-icons">view_comfy</i><span>Departments</span></a>
+                    </li>
+                    @endif
+                </ul>
+            </div>
         </div>
-    </div>
 
     <!-- END: Main Menu-->
     <!-- BEGIN: Content-->
@@ -106,6 +105,7 @@
     <div class="drag-target"></div>
 
     <!-- BEGIN: Footer-->
+    <br><br><br>
     <footer class="footer footer-transparent footer-light navbar-shadow fixed-bottom">
         <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout"><span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2020 <a class="text-bold-800 grey darken-2" href="https://myzeepay.com" target="_blank">ZeePay</a></span></span></p>
     </footer>
