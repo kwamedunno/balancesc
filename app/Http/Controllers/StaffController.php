@@ -58,7 +58,4 @@ class StaffController extends Controller
             ->with('success', 'Staff inserted successfully.');
     }
 
-    public function showExample(){
-        return view('scorecard.example');
-    }
 }

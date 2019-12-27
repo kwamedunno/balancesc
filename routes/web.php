@@ -19,7 +19,7 @@ Route::get('/scorecards','ScorecardsController@showScoreCards')->name('show.scor
 Route::get('/scorecards/create','ScorecardsController@showCreateScoreCard')->name('show.create.scorecard');
 Route::get('/scorecards/view/{id}','ScorecardsController@showViewScoreCard')->name('show.view.scorecard');
 Route::post('/scorecards/view/{id}','ScorecardsController@saveScoreCard')->name('save.scorecard');
-
+Route::get('/scorecards/createsc','ScorecardsController@createScoreCard')->name('create.scorecard');
 
 Route::get('/departments','DepartmentController@showDepartment')->name('show.departments');
 Route::post('/departments','DepartmentController@addDepartment')->name('add.department');
@@ -27,6 +27,6 @@ Route::post('/departments','DepartmentController@addDepartment')->name('add.depa
 Route::get('/staff','StaffController@showStaff')->name('show.staff');
 Route::post('/staff','StaffController@addStaff')->name('add.staff');
 
-Route::get('/example','StaffController@showExample')->name('show.example');
+
 
 

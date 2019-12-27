@@ -83,13 +83,18 @@ class ScoreCardsController extends Controller
 
         $sc = ScoreCard::find($request->scorecard_id);
         $sc->last_updated_by = Auth::user()->id;
-        $sc->updated_at = date("Y-m-d H:i:s");
+        $sc->updated_at = date("Y-m-d H:i:s"); 
         $sc->save();
         return redirect()->back()
                 ->with('success', 'Score Card Saved');
     }
 
-    public function addScoreCard(Request $request){
-        
+    public function createScoreCard(){
+        $staff = Staff::where('department','=',Auth::user()->department)->where('role','>=',Auth::user()->role)->get()->toArray();
+        // dd($staff);
+        // exit;
+        return view('scorecard.create')
+            ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray())
+            ->with('staff',$staff);
     }
 }
