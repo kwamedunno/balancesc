@@ -10,7 +10,7 @@
                 <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
                 </div>
                 <div class="col-md-3" style="text-align: right; margin-bottom: 5px;">
-                    
+                    <form action="{{ route('save.scorecard', $scorecard['id']) }}" method="post">
                     <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#default"> Copy <i class="la la-disc"></i></button>
                     <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
                 </div>
@@ -41,6 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody> 
+                                    @csrf
                                     <input type="hidden" name="scorecard_id" value="{{ $scorecard['id'] }}">
                                     @for($i=0; $i<sizeof($objectives); $i++) 
                                         <tr style="background-color:#343a40; color:#fff !important;">
@@ -96,7 +97,7 @@
                                         <tr style="background-color:#343a40; color:#fff !important;">
                                             <td colspan="7" style="text-align: right; font-weight: 800"><h5 style="color:#fff;">Total Score:<b> {{ round($scorecard['total_score'], 2) }} %</b></h5></td>
                                         </tr>
-                                
+                                </form>
                             </tbody>
                             <tfoot>
                             </tfoot>
@@ -105,58 +106,58 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel1">Copy Scorecard</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="">
-                                        <label class="input-group-text" for="inputGroupSelect01">Name</label>
-                                        <select class="custom-select" required name="officer_name[]" id="staff">
-                                            <option value="">Choose...</option>
-                                        </select>
-                                        
-                                    </div>
-                                    <label class="input-group-text" for="inputGroupSelect01">Dates</label><br>  
-                                </div>
-                            </div>
-                            <div class="row">
-                                
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <select class="form-control custom-select" required name="scorecard_month[]" id="staff">
-                                                    <option value="">Choose Month...</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <select class="form-control custom-select" required name="officer_name[]" id="staff">
-                                                    <option value="">Choose Year...</option>
-                                                </select>
-                                             </div>
-                                        </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn danger btn-outline-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn success btn-outline-success">Save</button>
-                        </div>
-                    
+    </div>
+     <!-- Modal -->
+     <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel1">Copy Scorecard</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <form action="{{ route('add.department') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="">
+                                    <label class="input-group-text" for="inputGroupSelect01">Name</label>
+                                    <select class="custom-select" required name="officer_name[]" id="staff">
+                                        <option value="">Choose...</option>
+                                    </select>
+                                    
+                                </div>
+                                <label class="input-group-text" for="inputGroupSelect01">Dates</label><br>  
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <select class="form-control custom-select" required name="scorecard_month[]" id="staff">
+                                                <option value="">Choose Month...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <select class="form-control custom-select" required name="officer_name[]" id="staff">
+                                                <option value="">Choose Year...</option>
+                                            </select>
+                                         </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn danger btn-outline-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn success btn-outline-success">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-     <!-- Modal -->
-     
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/scorecard/view.js') }}"></script>
 @endsection
