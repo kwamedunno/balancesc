@@ -51,7 +51,9 @@ class ScoreCardsController extends Controller
         } 
         catch (\Exception $e) {
 
-            return $e->getMessage();
+            Log::error("\t".$e->getTraceAsString());
+            Log::error("\t".$e->getMessage());
+            //return $e->getMessage();
 
         }
         
