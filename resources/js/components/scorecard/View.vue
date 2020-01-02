@@ -1,10 +1,6 @@
-@extends('layouts.master')
-
-@section('title') View ScoreCard @endsection
-@section('content-body')
-
-    <div class="row">
-        <div class="col-md-12">
+<template>
+    <div>
+         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-9" style="margin-top: 10px;">
                 <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
@@ -155,8 +151,9 @@
             </div>
         </div>
     </div>
-     <!-- Modal -->
-     
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/scorecard/view.js') }}"></script>
-@endsection
+</template>
+<script>
+export default {
+    
+}
+</script>

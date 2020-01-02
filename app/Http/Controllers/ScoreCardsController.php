@@ -55,8 +55,6 @@ class ScoreCardsController extends Controller
     public function showViewScoreCard($id){
 
         $objectives = ScoreCardObjective::where('parent',null)->where('score_card', '=', $id)->with('actual','objectives.actual', 'objectives.measures.actual', 'objectives.measures.metrics.actual')->get()->toArray();
-        // dd($scorecard);
-        // exit;
         $scorecard = ScoreCard::where('id','=', $id)->with('staff')->first()->toArray();
         $scorecard['period'] = date('F Y', strtotime("01-".$scorecard['period']));
         $metrics = ScoreCardMetric::where('scorecard', '=', $id)->orderBy('id', 'asc')->get()->toArray();
@@ -73,9 +71,9 @@ class ScoreCardsController extends Controller
 
         
     }
-
+    
+    //Saving Scorecard input from the user
     public function saveScoreCard(Request $request){
-
         $id = ScoreCardMetric::where('scorecard','=',$request->input('scorecard_id'))->get('id')->toArray();
         for ($i=0; $i <(sizeof($id)) ; $i++) { 
             ScoreCardMetric::where('id','=',$id[$i]['id'])->update(['score' => $request->input('metric_'.$id[$i]['id'])]);
@@ -89,12 +87,21 @@ class ScoreCardsController extends Controller
                 ->with('success', 'Score Card Saved');
     }
 
+    //viewing the create scorecard page
     public function createScoreCard(){
         $staff = Staff::where('department','=',Auth::user()->department)->where('role','>=',Auth::user()->role)->get()->toArray();
-        // dd($staff);
-        // exit;
+        $entire_staff = Staff::with('role','department')->get()->toArray();
+        
         return view('scorecard.create')
             ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray())
-            ->with('staff',$staff);
+            ->with('staff',$staff)
+            ->with('entirestaff',$entire_staff);
     }
+
+    //Saving created scorecard
+    // public function saveCreatedScoreCard(){
+    //     $scorecard_name = new ScoreCard::where
+    // }
+
+    
 }

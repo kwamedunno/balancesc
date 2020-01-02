@@ -32,9 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/menu/menu-types/material-horizontal-menu.css">
     <!-- END: Page CSS-->
 
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
-    <!-- END: Custom CSS-->
+  
 
 </head>
 <!-- END: Head-->

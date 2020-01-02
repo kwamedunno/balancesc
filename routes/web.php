@@ -16,7 +16,7 @@ Route::post('/', 'Auth\LoginController@login')->name('process.login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/scorecards','ScorecardsController@showScoreCards')->name('show.scorecards');
-Route::get('/scorecards/create','ScorecardsController@showCreateScoreCard')->name('show.create.scorecard');
+Route::get('/scorecards/create','ScoreCardsController@showCreateScoreCard')->name('show.create.scorecard');
 Route::get('/scorecards/view/{id}','ScorecardsController@showViewScoreCard')->name('show.view.scorecard');
 Route::post('/scorecards/view/{id}','ScorecardsController@saveScoreCard')->name('save.scorecard');
 Route::get('/scorecards/createsc','ScorecardsController@createScoreCard')->name('create.scorecard');
