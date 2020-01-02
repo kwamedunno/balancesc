@@ -22,7 +22,9 @@ class ScoreCardsController extends Controller
     }
 
     public function showScoreCards(){
-        if (Auth::user()->role == 1) {
+        try {
+            //code...
+            if (Auth::user()->role == 1) {
             # show all
             $scorecards = ScoreCard::with('staff.department', 'lastUpdatedBy')->get()->toArray();
         }elseif(Auth::user()->role == 2){
@@ -46,11 +48,22 @@ class ScoreCardsController extends Controller
         return view('scorecards')
                 ->with('scorecards', $scorecards);
 
-    }                                                                                                                                                   
+        } 
+        catch (\Exception $e) {
+
+            return $e->getMessage();
+
+        }
+        
+
+    }                 
+    
+    
     public function showCreateScoreCard(){
         return view('scorecard.add')
             ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray());
     }
+
 
     public function showViewScoreCard($id){
 
