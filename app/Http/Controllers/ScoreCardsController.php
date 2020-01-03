@@ -22,6 +22,7 @@ class ScoreCardsController extends Controller
     }
 
     public function showScoreCards(){
+
         try {
             //code...
             if (Auth::user()->role == 1) {
@@ -49,6 +50,7 @@ class ScoreCardsController extends Controller
                 ->with('scorecards', $scorecards);
 
         } 
+        
         catch (\Exception $e) {
 
             return $e->getMessage();

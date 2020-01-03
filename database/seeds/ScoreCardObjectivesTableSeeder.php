@@ -7,7 +7,7 @@ class ScoreCardObjectivesTableSeeder extends CsvSeeder
     public function __construct()
 	{
 		$this->table = 'score_card_objectives';
-        $this->filename = base_path().'/database/seeds/csvs/score_card_objectives.csv';
+        $this->filename = base_path().'/database/seeds/csvs/score_card_objectives_2.csv';
         $this->mapping = [
             0 => 'score_card',
             1 => 'objective',

@@ -7,7 +7,7 @@ class ObjectivesTableSeeder extends CsvSeeder {
 	public function __construct()
 	{
 		$this->table = 'objectives';
-        $this->filename = base_path().'/database/seeds/csvs/objectives.csv';
+        $this->filename = base_path().'/database/seeds/csvs/objectives_2.csv';
         $this->mapping = [
             0 => 'id',
             1 => 'description',

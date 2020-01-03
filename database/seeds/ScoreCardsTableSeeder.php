@@ -15,15 +15,15 @@ class ScoreCardsTableSeeder extends Seeder
         DB::table('score_cards')->insert([
         [
             'id'=> '1',
-            'staff'=>'1',
+            'staff'=>'2',
             'period'=>'01-2020',
-            'last_updated_by'=>'1'
+            'last_updated_by'=>'2'
 
         ],
         [
 
             'id'=> '2',
-            'staff'=>'2',
+            'staff'=>'4',
             'period'=>'01-2020',
             'last_updated_by'=>'3'
 
@@ -38,7 +38,7 @@ class ScoreCardsTableSeeder extends Seeder
         [
 
             'id'=> '4',
-            'staff'=>'4',
+            'staff'=>'1',
             'period'=>'01-2020',
             'last_updated_by'=>'4'
         ],

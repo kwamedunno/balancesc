@@ -7,7 +7,7 @@ class MeasuresTableSeeder extends CsvSeeder
     public function __construct()
 	{
 		$this->table = 'measures';
-        $this->filename = base_path().'/database/seeds/csvs/measures.csv';
+        $this->filename = base_path().'/database/seeds/csvs/measures_2.csv';
         $this->mapping = [
             0 => 'id',
             1 => 'description',
