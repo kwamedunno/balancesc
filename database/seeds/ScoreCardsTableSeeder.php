@@ -31,14 +31,14 @@ class ScoreCardsTableSeeder extends Seeder
         [
 
             'id'=> '3',
-            'staff'=>'3',
+            'staff'=>'18',
             'period'=>'01-2020',
             'last_updated_by'=>'2'
         ],
         [
 
             'id'=> '4',
-            'staff'=>'1',
+            'staff'=>'3',
             'period'=>'01-2020',
             'last_updated_by'=>'4'
         ],
@@ -136,7 +136,7 @@ class ScoreCardsTableSeeder extends Seeder
         [
 
             'id'=> '18',
-            'staff'=>'18',
+            'staff'=>'1',
             'period'=>'01-2020',
             'last_updated_by'=>'18'
         ],

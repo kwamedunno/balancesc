@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class StaffTableSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class StaffTableSeeder extends Seeder
             'name' => "Andrew Takyi-Appiah",
             'email' => 'akta@myzeepay.com',
             'department' => '11',
-            'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
+            'password' => Hash::make("Z33Pay@theFront"), //password
             'role' => "1"
         ],
         [

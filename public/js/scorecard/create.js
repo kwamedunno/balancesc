@@ -100,7 +100,160 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["user", "staff", "entire_staff", "objectives"],
+  data: function data() {
+    return {
+      cast_user: null,
+      cast_staff: null,
+      cast_entire_staff: null,
+      cast_objectives: null
+    };
+  },
+  created: function created() {
+    this.cast_user = JSON.parse(this.user);
+    this.cast_staff = JSON.parse(this.staff);
+    this.cast_entire_staff = JSON.parse(this.entire_staff);
+    this.cast_objectives = JSON.parse(this.objectives);
+  }
+});
 
 /***/ }),
 
@@ -119,9 +272,313 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", {}, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "input-group mb-3 col-lg-4" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm.user["role"] == 2
+                ? _c(
+                    "select",
+                    {
+                      staticClass: "custom-select",
+                      attrs: {
+                        required: "",
+                        name: "officer_name[]",
+                        id: "inputGroupSelect01"
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("Choose...")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.staff, function(user) {
+                        return _c(
+                          "option",
+                          { key: user.id, domProps: { value: user.id } },
+                          [_vm._v(" " + _vm._s(user.name))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                : _vm.user["role"] == 1
+                ? _c(
+                    "select",
+                    {
+                      staticClass: "custom-select",
+                      attrs: {
+                        required: "",
+                        name: "officer_name[]",
+                        id: "inputGroupSelect01"
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("Choose...")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.entire_staff, function(staff) {
+                        return _c(
+                          "option",
+                          { key: staff.id, domProps: { value: staff.id } },
+                          [_vm._v(_vm._s(staff.name))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "invalid-feedback text-right" }, [
+                _vm._v("Choose officer Name")
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3)
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "table",
+          {
+            staticClass: "table table-striped table-bordered ",
+            attrs: { id: "scorecard" }
+          },
+          [
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              [
+                _vm._l(_vm.cast_objectives, function(objective_1) {
+                  return _c(
+                    "tr",
+                    {
+                      key: objective_1.id,
+                      staticStyle: {
+                        "background-color": "#343a40",
+                        color: "#fff !important"
+                      }
+                    },
+                    [
+                      _c("td", { attrs: { colspan: "5" } }, [
+                        _c(
+                          "h4",
+                          { staticStyle: { color: "#fff !important" } },
+                          [_vm._v(_vm._s(objective_1.description))]
+                        )
+                      ])
+                    ]
+                  )
+                }),
+                _vm._l(_vm.objective_1.objectives, function(objective_2) {
+                  return _c("tr", { key: objective_2.id }, [
+                    _c("td", [
+                      _c("h6", { staticStyle: { "margin-left": "20px" } }, [
+                        _vm._v(_vm._s(objective_2.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td")
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("tfoot")
+          ]
+        )
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-5", staticStyle: { "margin-top": "10px" } },
+        [_c("h5", { staticClass: "card-title" }, [_vm._v("Create Score Card")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "col-md-7",
+          staticStyle: { "text-align": "right", "margin-bottom": "5px" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "btn btn-info",
+              attrs: { "data-toggle": "modal", "data-target": "#default" }
+            },
+            [_vm._v("Save "), _c("i", { staticClass: "la la-disc" })]
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "label",
+        {
+          staticClass: "input-group-text",
+          attrs: { for: "inputGroupSelect01" }
+        },
+        [_vm._v("Name")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group mb-3 col-lg-4" }, [
+      _c("div", { staticClass: "input-group-prepend" }, [
+        _c(
+          "label",
+          {
+            staticClass: "input-group-text",
+            attrs: { for: "inputGroupSelect02" }
+          },
+          [_vm._v("Month")]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "custom-select",
+          attrs: { required: "", name: "monthRate[]", id: "" }
+        },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("Choose...")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "01" } }, [_vm._v("Jan")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "02" } }, [_vm._v("Feb")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "03" } }, [_vm._v("Mar")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "04" } }, [_vm._v("Apr")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "05" } }, [_vm._v("May")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "06" } }, [_vm._v("Jun")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "07" } }, [_vm._v("Jul")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "08" } }, [_vm._v("Aug")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "09" } }, [_vm._v("Sep")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "10" } }, [_vm._v("Oct")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "11" } }, [_vm._v("Nov")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "12" } }, [_vm._v("Dec")])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback text-right" }, [
+        _vm._v("Pick a month")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group mb-3 col-lg-4" }, [
+      _c("div", { staticClass: "input-group-prepend" }, [
+        _c(
+          "label",
+          {
+            staticClass: "input-group-text",
+            attrs: { for: "inputGroupSelect01" }
+          },
+          [_vm._v("Year")]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "custom-select",
+          attrs: { required: "", name: "yearRate[]", id: "" }
+        },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("Choose...")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2020" } }, [_vm._v("2020")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2021" } }, [_vm._v("2021")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2022" } }, [_vm._v("2022")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2023" } }, [_vm._v("2023")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2024" } }, [_vm._v("2024")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2025" } }, [_vm._v("2025")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2026" } }, [_vm._v("2026")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2027" } }, [_vm._v("2027")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2028" } }, [_vm._v("2028")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2029" } }, [_vm._v("2029")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2030" } }, [_vm._v("2030")])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead table-success" }, [
+      _c("tr", [
+        _c("th", [_vm._v("Objective")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Measure")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Metric")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Weight %")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Target")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -315,7 +772,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_scorecard_Create_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../components/scorecard/Create.vue */ "./resources/js/components/scorecard/Create.vue");
 
-Vue.component('create-content', _components_scorecard_Create_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.component('create-scorecard', _components_scorecard_Create_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 new Vue({
   el: "#page"
 });

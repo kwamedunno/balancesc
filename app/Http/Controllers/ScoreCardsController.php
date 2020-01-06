@@ -108,9 +108,9 @@ class ScoreCardsController extends Controller
         $entire_staff = Staff::with('role','department')->get()->toArray();
         
         return view('scorecard.create')
-            ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray())
-            ->with('staff',$staff)
-            ->with('entirestaff',$entire_staff);
+            ->with('objectives', json_encode(Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray()))
+            ->with('staff',json_encode($staff))
+            ->with('entire_staff',json_encode($entire_staff));
     }
 
     //Saving created scorecard

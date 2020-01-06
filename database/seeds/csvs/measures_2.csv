@@ -162,3 +162,14 @@
 162,Review existing SLAs,27
 163,Acceptable compliance rating,27
 164,Employee Satisfaction index,11
+165,Commissions (Mobile Money),6
+166,Commissions (Payments),6
+167,Volumes (Mobile Money),6
+168,Volumes (Payments),6
+169,Transactions (offnet),6
+170,Transactions (CashIn),6
+171,Transactions (Others),6
+172,Incremental Transactions InstntMny,7
+173,Incremental Transactions Payments Are Us,7
+174,Incremental Transactions API,7
+175,Incremental Transactions Mortgage Remit,7
