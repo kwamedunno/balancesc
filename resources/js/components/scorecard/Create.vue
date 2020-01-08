@@ -16,13 +16,13 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">Name</label>
                             </div>
-                            <select v-if="user['role']==2" class="custom-select" required name="officer_name[]" id="inputGroupSelect01">
+                            <select v-if="cast_user['role']==2" class="custom-select" required name="officer_name[]" id="inputGroupSelect01">
                                 <option value="">Choose...</option>
-                                <option v-for="user in staff" :key="user.id" :value="user.id"> {{ user.name }}</option>
+                                <option v-for="user in cast_staff" :key="user.id" :value="user.id"> {{ user.name }}</option>
                             </select>
-                            <select v-else-if="user['role']==1" class="custom-select" required name="officer_name[]" id="inputGroupSelect01">
+                            <select v-else-if="cast_user['role']==1" class="custom-select" required name="officer_name[]" id="inputGroupSelect01">
                                 <option value="">Choose...</option>
-                                <option v-for="staff in entire_staff" :key="staff.id" :value="staff.id">{{ staff.name }}</option>
+                                <option v-for="staff in cast_entire_staff" :key="staff.id" :value="staff.id">{{ staff.name }}</option>
                             </select>
                             <div class="invalid-feedback text-right">Choose officer Name</div>
                         </div>
@@ -80,8 +80,7 @@
                     </thead>
                     <tbody> 
                             <tr v-for="objective_1 in cast_objectives" :key="objective_1.id" style="background-color:#343a40; color:#fff !important;">
-                                    <td colspan="5"><h4 style="color:#fff !important;">{{ objective_1.description}}</h4></td>
-                                    
+                                    <td colspan="5"><h4 style="color:#fff !important;">{{ objective_1.objectives }}</h4></td>
                                     <tr v-for="objective_2 in objective_1.objectives" :key="objective_2.id">
                                         <td><h6 style="margin-left: 20px;">{{ objective_2.description }}</h6></td>
                                         <td></td>
@@ -98,8 +97,8 @@
                                                 <td><input style="height: 20px; width: 100px;" class="form-control" type="text" required></td>
                                             
                                                 <tr v-if="index!=objective.objectives.measures.metrics.length-1"><td></td><td></td></tr>
-                                            </div>
-                                        </tr> -->
+                                            </div>-->
+                                        </tr> 
                                     </tr>
                         
                     </tbody>

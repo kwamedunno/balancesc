@@ -236,7 +236,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["user", "staff", "entire_staff", "objectives"],
   data: function data() {
@@ -282,7 +281,7 @@ var render = function() {
             _c("div", { staticClass: "input-group mb-3 col-lg-4" }, [
               _vm._m(1),
               _vm._v(" "),
-              _vm.user["role"] == 2
+              _vm.cast_user["role"] == 2
                 ? _c(
                     "select",
                     {
@@ -298,7 +297,7 @@ var render = function() {
                         _vm._v("Choose...")
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.staff, function(user) {
+                      _vm._l(_vm.cast_staff, function(user) {
                         return _c(
                           "option",
                           { key: user.id, domProps: { value: user.id } },
@@ -308,7 +307,7 @@ var render = function() {
                     ],
                     2
                   )
-                : _vm.user["role"] == 1
+                : _vm.cast_user["role"] == 1
                 ? _c(
                     "select",
                     {
@@ -324,7 +323,7 @@ var render = function() {
                         _vm._v("Choose...")
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.entire_staff, function(staff) {
+                      _vm._l(_vm.cast_entire_staff, function(staff) {
                         return _c(
                           "option",
                           { key: staff.id, domProps: { value: staff.id } },
@@ -374,7 +373,7 @@ var render = function() {
                         _c(
                           "h4",
                           { staticStyle: { color: "#fff !important" } },
-                          [_vm._v(_vm._s(objective_1.description))]
+                          [_vm._v(_vm._s(objective_1.objectives))]
                         )
                       ])
                     ]
