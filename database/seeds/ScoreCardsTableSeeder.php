@@ -59,9 +59,9 @@ class ScoreCardsTableSeeder extends Seeder
         [
 
             'id'=> '7',
-            'staff'=>'7',
+            'staff'=>'24',
             'period'=>'01-2020',
-            'last_updated_by'=>'7'
+            'last_updated_by'=>'24'
         ],
         [
 
@@ -87,9 +87,9 @@ class ScoreCardsTableSeeder extends Seeder
         [
 
             'id'=> '11',
-            'staff'=>'11',
+            'staff'=>'7',
             'period'=>'01-2020',
-            'last_updated_by'=>'11'
+            'last_updated_by'=>'7'
         ],
         [
 
@@ -178,9 +178,9 @@ class ScoreCardsTableSeeder extends Seeder
         [
 
             'id'=> '24',
-            'staff'=>'24',
+            'staff'=>'11',
             'period'=>'01-2020',
-            'last_updated_by'=>'24'
+            'last_updated_by'=>'11'
         ]
 
         ]);

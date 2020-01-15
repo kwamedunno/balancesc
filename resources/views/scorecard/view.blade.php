@@ -11,7 +11,9 @@
                 </div>
                 <div class="col-md-3" style="text-align: right; margin-bottom: 5px;">
                     <form action="{{ route('save.scorecard', $scorecard['id']) }}" method="post">
-                    <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#default"> Copy <i class="la la-disc"></i></button>
+                        @if(Auth::user()->role < 3)
+                            <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#default"> Copy <i class="la la-disc"></i></button>
+                        @endif
                     <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
                 </div>
             </div>
@@ -23,9 +25,9 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
-            <div class="card" style="">
-                <div class="card-content collapse show">
-                    <div class="card-body">
+            <div class="" style="">
+                <div class="collapse show">
+                    <div class="">
                         <table class="table table-striped table-bordered " id="scorecard">
                             <thead class="thead table-success">
                                 <tr>
@@ -45,7 +47,7 @@
                                     <input type="hidden" name="scorecard_id" value="{{ $scorecard['id'] }}">
                                     @for($i=0; $i<sizeof($objectives); $i++) 
                                         <tr style="background-color:#343a40; color:#fff !important;">
-                                            <td colspan="7"><h4 style="color:#fff !important;">{{ $i+1  }}.&nbsp;{{ $objectives[$i]['actual']['description'] }}</h4></td>
+                                            <td colspan="7"><h4 style="color:#fff !important;">{{ $i+1 }}.&nbsp;{{ $objectives[$i]['actual']['description'] }}</h4></td>
                                             
                                             @for($j=0; $j<sizeof($objectives[$i]['objectives']); $j++) 
                                                 <tr >
@@ -158,6 +160,4 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/scorecard/view.js') }}"></script>
 @endsection

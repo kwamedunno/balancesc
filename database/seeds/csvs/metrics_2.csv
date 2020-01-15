@@ -1,8 +1,8 @@
-1,budget,1
-2,budget,2
-3,budget,3
-4,budget,4
-5,budget,5
+1,Budget,1
+2,Budget,2
+3,Budget,3
+4,Budget,4
+5,Budget,5
 6,30% Monthly,6
 7,Min of 3 opportunities,7
 8,30% increase of previous months performance,8
@@ -108,8 +108,8 @@
 108,Monthly,104
 109,100% implementation,105
 110,Monthly for the bank,106
-111,Monthly report submitted for the bank,107
-112,Quartely for the bank,108
+111,Monthly report submitted for the organisation,107
+112,Quarterly for the organisation,108
 113,Monthly ,109
 114,100% implementation,110
 115,Monthly,111
@@ -137,3 +137,23 @@
 137,100% monthly reported,160
 138,95% minimum,161
 139,1 per half year,162
+140,Budget,155
+141,Budget,165
+142,Budget,166
+143,Budget,167
+144,Budget,168
+145,Budget,169
+146,Budget,170
+147,Budget,171
+148,20% Monthly,172
+149,20% Monthly,173
+150,20% Monthly,174
+151,20% Monthly,175
+152,Sign on 5 SME,26
+153,Transactions 100 monthly,26
+154,100% implementation,182
+155,100% implementation,183
+156,100% implementation,184
+157,No penalties,185
+158,Min of 80%,163
+159,100% implementation,187

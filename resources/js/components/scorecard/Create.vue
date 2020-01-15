@@ -79,28 +79,28 @@
                         </tr>
                     </thead>
                     <tbody> 
-                            <tr v-for="objective_1 in cast_objectives" :key="objective_1.id" style="background-color:#343a40; color:#fff !important;">
-                                    <td colspan="5"><h4 style="color:#fff !important;">{{ objective_1.objectives }}</h4></td>
-                                    <tr v-for="objective_2 in objective_1.objectives" :key="objective_2.id">
-                                        <td><h6 style="margin-left: 20px;">{{ objective_2.description }}</h6></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <!-- <tr v-for="objective in objective.objectives" :key="objective.id">
-                                            
-                                            <td></td>
-                                            <td>{{ objective.objectives.measures.description }}</td>
-                                            <div v-for="(objective, index) in objective.objectives" :key="objective.id">
-                                                <td>{{ objective.objectives.measures.metrics.description  }}</td>
-                                                <td><input style="height: 20px;" class="form-control" type="text" required></td>
-                                                <td><input style="height: 20px; width: 100px;" class="form-control" type="text" required></td>
-                                            
-                                                <tr v-if="index!=objective.objectives.measures.metrics.length-1"><td></td><td></td></tr>
-                                            </div>-->
-                                        </tr> 
-                                    </tr>
-                        
+                        <tr v-for="objective_1 in cast_objectives" :key="objective_1.id" style="background-color:#343a40; color:#fff !important;">
+                            <td colspan="5"><h4 style="color:#fff !important;">{{ objective_1.objectives }}</h4></td>
+                            <tr v-for="objective_2 in objective_1.objectives" :key="objective_2.id">
+                                <td><h6 style="margin-left: 20px;">{{ objective_2.description }}</h6></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <!-- <tr v-for="objective in objective.objectives" :key="objective.id">
+                                    
+                                    <td></td>
+                                    <td>{{ objective.objectives.measures.description }}</td>
+                                    <div v-for="(objective, index) in objective.objectives" :key="objective.id">
+                                        <td>{{ objective.objectives.measures.metrics.description  }}</td>
+                                        <td><input style="height: 20px;" class="form-control" type="text" required></td>
+                                        <td><input style="height: 20px; width: 100px;" class="form-control" type="text" required></td>
+                                    
+                                        <tr v-if="index!=objective.objectives.measures.metrics.length-1"><td></td><td></td></tr>
+                                    </div>-->
+                            </tr> 
+                        </tr>
+                
                     </tbody>
                     <tfoot>
                     </tfoot>

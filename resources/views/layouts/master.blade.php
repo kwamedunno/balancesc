@@ -105,7 +105,7 @@
     <!-- BEGIN: Footer-->
     <br><br><br>
     <footer class="footer footer-transparent footer-light navbar-shadow fixed-bottom">
-        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout"><span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2020 <a class="text-bold-800 grey darken-2" href="https://myzeepay.com" target="_blank">ZeePay</a></span></span></p>
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout"><span class="float-md-left d-block d-md-inline-block">Copyright &copy; {{ now()->year }} <a class="text-bold-800 grey darken-2" href="https://myzeepay.com" target="_blank"><span style="color:#da3832">Zee</span><span style="color:#b1cd53">Pay</span></a></span></span></p>
     </footer>
     <!-- END: Footer-->
 
