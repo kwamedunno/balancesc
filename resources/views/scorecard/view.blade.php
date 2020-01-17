@@ -87,8 +87,6 @@
                                                                 
                                                             @endfor
                                                             </tr>
-                                                            
-                                                            
                                                     @endfor
                                                     </tr>
                                                 </tr>

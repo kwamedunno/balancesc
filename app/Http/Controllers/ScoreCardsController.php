@@ -63,10 +63,10 @@ class ScoreCardsController extends Controller
     }                 
     
     
-    public function showCreateScoreCard(){
-        return view('scorecard.add')
-            ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray());
-    }
+    // public function showCreateScoreCard(){
+    //     return view('scorecard.add')
+    //         ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray());
+    // }
 
 
     public function showViewScoreCard($id){
@@ -200,6 +200,16 @@ class ScoreCardsController extends Controller
             ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray())
             ->with('staff',$staff)
             ->with('entire_staff',$entire_staff);
+    }
+
+    public function deleteScoreCard($id){
+        $scorecard = ScoreCard::where('id','=', $id)->first();
+        $scorecard->delete();
+
+        return redirect()->back()
+            ->with('deleted','Score Card has been deleted');
+
+        
     }
 
 
