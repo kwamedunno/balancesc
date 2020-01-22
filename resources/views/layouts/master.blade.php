@@ -61,7 +61,9 @@
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">{{ Auth::user()->name }}</span><span class="avatar avatar-online"><img src="{{asset('app-assets/images/icons/user_icon.png')}}" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="material-icons">power_settings_new</i> Logout</a>
+                                <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('reset.password') }}"><i class="material-icons">lock</i> Change Password</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"><i class="material-icons">power_settings_new</i> Logout</a>
                             </div>
                         </li>
                     </ul>

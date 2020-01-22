@@ -11,9 +11,9 @@
                 </div>
                 <div class="col-md-3" style="text-align: right; margin-bottom: 5px;">
                     <form action="{{ route('save.scorecard', $scorecard['id']) }}" method="post">
-                        @if(Auth::user()->role < 3)
+                        {{-- @if(Auth::user()->role < 3)
                             <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#default"> Copy <i class="la la-disc"></i></button>
-                        @endif
+                        @endif --}}
                     <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
                 </div>
             </div>
@@ -104,57 +104,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-     <!-- Modal -->
-     <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel1">Copy Scorecard</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('add.department') }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="">
-                                    <label class="input-group-text" for="inputGroupSelect01">Name</label>
-                                    <select class="custom-select" required name="officer_name[]" id="staff">
-                                        <option value="">Choose...</option>
-                                    </select>
-                                    
-                                </div>
-                                <label class="input-group-text" for="inputGroupSelect01">Dates</label><br>  
-                            </div>
-                        </div>
-                        <div class="row">
-                            
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <select class="form-control custom-select" required name="scorecard_month[]" id="staff">
-                                                <option value="">Choose Month...</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <select class="form-control custom-select" required name="officer_name[]" id="staff">
-                                                <option value="">Choose Year...</option>
-                                            </select>
-                                         </div>
-                                    </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn danger btn-outline-danger" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn success btn-outline-success">Save</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

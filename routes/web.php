@@ -11,9 +11,15 @@
 |
 */
 
+//Google Login routes
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+
 Route::get('/', 'Auth\LoginController@showLogin')->name('show.login');
 Route::post('/', 'Auth\LoginController@login')->name('process.login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/changepassword','Auth\ResetPasswordController@showResetPassword')->name('reset.password');
+Route::post('/changepassword','Auth\ResetPasswordController@updatePassword')->name('password.update');
 
 Route::get('/scorecards','ScoreCardsController@showScoreCards')->name('show.scorecards');
 // Route::get('/scorecards/create','ScoreCardsController@showCreateScoreCard')->name('show.create.scorecard');

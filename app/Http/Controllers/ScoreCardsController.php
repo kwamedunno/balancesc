@@ -77,6 +77,8 @@ class ScoreCardsController extends Controller
         $metrics = ScoreCardMetric::where('scorecard', '=', $id)->orderBy('id', 'asc')->get()->toArray();
         $scorecard['total_score'] = 0;
         $scorecard['target_weight'] = 0;
+        $entire_staff = Staff::with('role','department')->get()->toArray();
+
         for ($i=0; $i < (sizeof($metrics)) ; $i++) { 
             $scorecard['total_score'] += ($metrics[$i]['score'] * $metrics[$i]['weight']) / $metrics[$i]['target']; //score
         }
@@ -84,6 +86,7 @@ class ScoreCardsController extends Controller
         return view('scorecard.view')
             ->with('objectives', $objectives)
             ->with('scorecard', $scorecard)
+            ->with('entire_staff',$entire_staff)
             ->with('metrics', $metrics);
 
         
