@@ -97,7 +97,7 @@ html body .pace .pace-progress {
 }
 
 .app-content.center-layout {
-  overflow : hidden;
+  overflow : auto;
 }
 
 @media (max-width: 767.98px) {

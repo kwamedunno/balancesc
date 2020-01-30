@@ -6,6 +6,7 @@ use App\Staff;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -28,17 +29,18 @@ class ResetPasswordController extends Controller
     }
 
     public function updatePassword(Request $request){
-        $staff =  Staff::where('id','=',Auth::user()->id)->get('password')->first();
-        $staff->password = $request->password;
+        $staff =  Staff::find(Auth::user()->id);
         if(($request->password_confirmation)!=($request->password)){
             return redirect()->back()
                 ->with('error','Passwords do not match');
         }
         else{
-        $staff->update(['password'=>$staff->password]);
-        
-        return view('login')
-            ->with('success','Password successfully changed');
+            $staff->password = Hash::make($request->password);
+            $staff->save();
+            // $staff->update(['password'=>$staff->password]);
+            
+            return redirect()->back()
+                ->with('success','Password changed successfully');
         }
     }
 
