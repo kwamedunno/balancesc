@@ -17,6 +17,14 @@
                             {{ session()->get('error') }}
                         </div>
                     @endif
+                    @if(session()->has('success'))
+                        <div class="alert alert-success alert-dismissible mb-2"  role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
