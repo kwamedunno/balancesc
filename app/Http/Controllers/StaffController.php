@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Role;
 use App\Staff;
-use App\Department;
+use App\ScoreCard;
 
+use App\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -56,6 +57,18 @@ class StaffController extends Controller
         
         return redirect()->route('show.staff')
             ->with('success', 'Staff inserted successfully.');
+    }
+
+    public function deleteStaff($id){
+        $staff = Staff::where('id','=', $id)->first();
+        $staff->delete();
+        $scorecard = ScoreCard::where('staff','=', $id)->first();
+        $scorecard->delete();
+
+        return redirect()->back()
+            ->with('deleted','Staff has been deleted');
+
+        
     }
 
 }

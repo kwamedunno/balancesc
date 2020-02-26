@@ -35,6 +35,7 @@ Route::post('/departments','DepartmentController@addDepartment')->name('add.depa
 
 Route::get('/staff','StaffController@showStaff')->name('show.staff');
 Route::post('/staff','StaffController@addStaff')->name('add.staff');
+Route::get('/staff/delete/{id}','StaffController@deleteStaff')->name('delete.staff');
 
 
 
