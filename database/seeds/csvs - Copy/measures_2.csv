@@ -15,7 +15,7 @@
 15,Maintain Reversal threshold of,13
 16,"Off-the-Job Training (Classroom based, eLearning, etc.)",11
 17,On-the-Job training (manager/supervisor facilitated learning),11
-18,Internal service quality,13
+18,Internal service quality,10
 19,Embed Corporate Values(CV)[Demonstrate pratical application of CV (re internal customer)],12
 20,Attempt Renovation/innovation ,14
 21,Sign on new Payment clients/partners,6
@@ -39,6 +39,17 @@
 39,Ensure annual audit review of all corridors where Zeepay has physical presence,17
 40,Ensure regulatory requirements in all corridors are adhered to and relevant documents filed,17
 41,Assist drive domestic revenues - Bring in at least 2 merchants monthly - 2,16
+51,Develop SLAs for the Unit,19
+52,Enforce SLAs for the Unit,19
+53,Maintain B & above audit rating,19
+54,Remediation of Compliance Findings & Recommendations,19
+55,Improve compliance ratings (95% and above) ,19
+56,Suggest initiatives,19
+57,Ensure daily settlement of all partners ,20
+58,Provide statement to all clients daily ,20
+59,Give partner feedback on settlement daily ,20
+60,Weekly performance reporting ,20
+61,Provide business performance stats ,20
 62,Design / Engineer / Acquire / Update Software Solutions to increase customer base / Improve customer efficiency. - 3,16
 63,Maintain relationship with counterparty banks,16
 64,Identify & increase settlement lines ,16
@@ -55,10 +66,28 @@
 75,Ensure deal slips are documented and filed,21
 76,Processing of errors,21
 77,Enforce SLAs for the Unit,21
+142,Projects & Live deployments   Completed on Time,30
+143,Automation of  manual processes,31
+144,Adherence to Service Level Agreements,31
+145,Re-Usability of IT developments,31
+146,Optimzation of IT Hardware and Software Resources,31
+147,Documentation of Old and New Processes,32
+148,Adherance to Policies and procedural manuals,32
+149,Business Continuity/Disaster Recovery Plan  Simulation,32
+150,Changes Resulting in problems\Downtime to live systems,33
+151,Changes to Fix  same problem,33
+152, Testing of solutions before live deployment,33
+153,Creation Of User Manuals for for IT systems and new releases,33
+154,Initiate decisions on disciplinary issues and communicated within 2 weeks of receipt of the report,27
 155,Volume,6
-156,Filing ,10
+156,Filing ,3
 157,Cost Reduction,15
 158,Number of transfers and mobile money transactions referred,26
+159,Ensure SLAs exist on Service Quality with Customers eg. TAT etc,27
+160,Review Turn Around Time (TAT) for all staff and ensure compliance with service charter,27
+161,Monitor executed SLAs that exist intra department and report on adherence levels monthly to management,27
+162,Review existing SLAs,27
+163,Acceptable compliance rating,27
 164,Employee Satisfaction index survey,11
 165,Commissions (Mobile Money),6
 166,Commissions (Payments),6
@@ -72,8 +101,18 @@
 174,Cross-border transactions growth (Ivory Coast),7
 175,Incremental Transactions Mortgage Remit,7
 176,Increase in agent network ,7
+177,Design and ensure a job rotation exercise across the business is implement,27
+178,Ensure all contracts with third parties are reviewed and signed,27
+179,Ensure optimum recruitment and placing of staff in all areas of the company,27
+180,Translating and communicating the strategic vision of the business to the company,27
+181,"Developing and managing job descriptions, performance monitoring system",27
+182,Conducting succession planning for key jobs/key individuals,27
+183,Communicate all policies initiatives ad policy changes to staff,27
+184,Design a framework to identify development and training needs for staff,27
 185,Meet all statutory obligations,17
 186,Stabilized/reduced employee sickness or absence/Lateness,13
+187,"Managing conflict (individual and collective), defining the forms of relations wit employees, negotiating with employee representatives taking account of legislation on industrial action (e.g. tribunals, mediation requirements)",18
+188,Provide a schedule of all projects & track,30
 189,Ensure Departmental Service Quality Reviews are completed,13
 190,Prepare Service Efficiency report for all units,13
 191,Create awareness on IT Procedures and Policies. Send out 4 IT Titbits for the month.,24
@@ -82,6 +121,13 @@
 194,Ensure that UAT is done for all developed applications.,24
 195,"Monthly Report on existing, ongoing and products to be developed ",24
 196,Brainstorm at least 2 product ideas from customers/sales to further update products,24
+197,Daily statement of affairs reconciliations,19
+198,Partner funding demand plan,19
+199,Daily settlement statements,19
+200,Daily reporting on retries/ cancellations/ reversals for the cash pick business,19
+201,"Preparation of weekly Zeepay statistics for Performance meetings (volumes, Transactions, Routes per partners) in line with performance reporting template",19
+202,"Perform Treasury operations functions (Deals processing & management, Deals reconciliation reports, filing of all Deal slips.)",19
+203,Hourly reconciliations Cash Pickup,19
 204,Reduce Cost in Electricity,15
 205,Create awareness on Digital Products and Policies. Send out 4 updates on products for the month. ,24
 206,Achieve a sales Budget of 80% of overall company budget,6
