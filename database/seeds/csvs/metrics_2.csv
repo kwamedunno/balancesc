@@ -58,7 +58,6 @@
 80,Zero percent error recorded per month,76
 81,100% Achievement,77
 135,Min 10 per month,158
-136,Monthly,156
 140,Budget,155
 141,Budget,165
 142,Budget,166
@@ -130,10 +129,10 @@
 241,Monthly,22
 242,2 Monthly,41
 243,"100,000 monthly",237
-244, monthly,238
-245, monthly,239
+244,monthly,238
+245,monthly,239
 246,monthly,240
-247, monthly,241
+247,monthly,241
 248, annual,242
 249,monthly,243
 250,Monthly,244
@@ -269,3 +268,5 @@
 380,Monthly,373
 381,Daily,374
 382,Daily,156
+383,"40,000 monthly",375
+384,0.3% of overall partner transaction monthly (input percentage of successful transactions),15
