@@ -15,7 +15,7 @@
 15,Maintain Reversal threshold of,13
 16,"Off-the-Job Training (Classroom based, eLearning, etc.)",11
 17,On-the-Job training (manager/supervisor facilitated learning),11
-18,Internal service quality,13
+18,Internal service quality,12
 19,Embed Corporate Values(CV)[Demonstrate pratical application of CV (re internal customer)],12
 20,Attempt Renovation/innovation ,14
 21,Sign on new Payment clients/partners,6
@@ -38,8 +38,8 @@
 38,Ensure regulatory audit is done every quarter,17
 39,Ensure annual audit review of all corridors where Zeepay has physical presence,17
 40,Ensure regulatory requirements in all corridors are adhered to and relevant documents filed,17
-41,Assist drive domestic revenues - Bring in at least 2 merchants monthly - 2,16
-62,Design / Engineer / Acquire / Update Software Solutions to increase customer base / Improve customer efficiency. - 3,16
+41,Assist drive domestic revenues - Bring in at least 2 merchants monthly ,16
+62,Design / Engineer / Acquire / Update Software Solutions to increase customer base / Improve customer efficiency. ,16
 63,Maintain relationship with counterparty banks,16
 64,Identify & increase settlement lines ,16
 65,Avoid funding gaps and ensure all partners fund on time ,16
@@ -115,3 +115,142 @@
 234,"Ensure all Bank of Ghana PSD reporting is done on time and within the agreed SLA, ensure that the relevant compliance reporting is met by all stakeholders and the relevant reports file to executive and board",35
 235," responsible for arranging with Board Secretary to plan board meetings, and ensure all board reporting are in place monthly without fail within the first 5days of the new month",35
 236,Referral of client Domestic/ remittances,7
+237,Convert beneficiaries to Zeepay mobile money wallet (1M users by year's end),36
+238,Achieve a 100% satisfactory rate through an improved client ticket response and resolution rate evidenced by report,36
+239,Achieve an effective client feedback success rate of 100% through survey program evidenced by report,36
+240,Design and implement net promoter score program,36
+241,Design and implement service delivery partner report,36
+242,Service delivery partner conference,36
+243,Reduce unsuccessful reversal rates for partners,36
+244,Document and implement all policies across the mobile money business ,37
+245,File monthly all relevant reports within the department,37
+246,"Complete, file and forward incident reports of all complaints and consumer reports before the 10th of every month for the previous month",37
+247,Hold meeting with tTPU on service coordination and report to leadership,37
+248,Manage team members to ensure productivity and excellent service delivery from the team ,38
+249,Manage the working environment of your department and ensure full compliance and excellent delivery of the service to the customer and to the business. ,38
+250,Manage clients(subscribers) to retain their wallets and maintain activity on the wallets through cross selling products to clients,14
+251,Ensure we achieve cost to income of 40/60 monthly,15
+252,Implement supply chain management 30 day policy,15
+253,Ensure Complete call over on all daily recons (Hourly) at the end and signed off by CEO,39
+254,"Ensure SOPs with right controls exist for all OPS verticals TPU, HR, Admin etc",39
+255,Ensure all documents go through approval with sign off sheets,39
+256,Ensure entire office files documented,39
+257,Ensure all SOA are sent daily end of day to all patners ,39
+258,Ensure that office automations is aligned and implemented by end of Qtr 2,39
+259,Ensure strict adherence to all operational requirements,39
+260,Host/Hold Operations meeting with Technology monthly and ensure action grid exists and resolved monthly as they arise,39
+261,"Maintain all registers (Assets, safe, attendance, visitors)",39
+262,Implement BCP Testing Quarterly,39
+263,Maintenance of assets as defined monthly,39
+264,Ensure branding material is documented and safely guarded,39
+265,Keep inventory of stores,39
+266,Ensure SOP's for every corridor,39
+267,Responsible for all operational bills in all countries with offices are paid,39
+268,Daily statement of affairs reconciliations,40
+269,Partner funding demand plan,40
+270,Daily settlement statements,40
+271,Daily reporting on retries/ cancellations/ reversals for the cash pick business ,40
+272," Preparation of weekly Zeepay statistics for Performance meetings (volumes, Transactions, Routes per partners) in line with performance reporting template",40
+273," Perform Treasury operations functions (Deals processing & management, Deals reconciliation reports, filing of all Deal slips.)",40
+274,Reconciliation - Cash Pickup,40
+275,"Deal Slips, partner rate confirmations, bank rates 
+and liquidation instructions filing ",40
+276,Ensure all Partner funding is done within 1 hour at institutions,40
+277,Communication of rates to partners,40
+278,Sign on 5 SMEs,26
+279,"Ensure SLAs exists with all partners and enforced, evidenced by SLAs",41
+280,Monitor and review all transaction SLAs to ensure a minimum uptime of 100% and report to Leadership daily,41
+281,"Monitor termination failure rate, reasons for failure and report independently to leadership daily",41
+282,Ensure SLA exist inter department and enforce full implementation monthly,41
+283,Perform monthly reviews according to approved annual plan and report to leadership monthly,41
+284,Ensure Service Quality reviews are done and concluded within a week and report to leadership.,41
+285,Ensure take off and exit meetings are held for every Service Quality review performed.,41
+286," Enforce Agreed response rate for TAT on all key activities: Rate reporting, rate confirmation etc",41
+287,Compliance Rating,41
+288, Annual compliance plan,42
+289,Ensure all policies are reviewed and updated for the entire business,42
+290,Ensure full Business Continuity Plan testing is available,42
+291,Penetration and vulnerability testing ,42
+292,Anti-money laundering reporting,42
+293,Complete all partner due diligence ,42
+294,Ensure monitoring and investigation officer is hired,42
+295,Perform Business 2 Business compliance review,42
+296,Anti-money Laundering testing and training ,42
+297,Anti=money laundering training for board members ,42
+298,Board compliance meeting ,42
+299,Velocity screening,42
+300,Sanction screening ,42
+301,Enhanced due diligence for partners ,42
+302,suspicious transactions,42
+303,Financial Intelligence Centre,42
+304,Bank of Ghana,42
+305,Board  memebers ,42
+306,Financial Conduct Authority Regulatory Reprting ,42
+307,Ensure data protection compliance across all markets,42
+308,Risk assessment (Anti-money Laundering),42
+309,Organise compliance workshop,42
+310,suspicious transactions – ensure that any suspicious activity are reported ,42
+311,"Prepare presentation, documents and train staff on Anti-money Laundering (AML)",43
+312,"Prepare presentation, documents and train agents on Anti-money Laundering (AML)",43
+313, Coordinate with Financial Iintelligence Centre (FIC) to provide a member of the FIC for AML training for board members ,43
+314,"Prepare presentation, documents and train agents on Data protection and General Data Protection Regulation",43
+315,"Prepare presentation, documents and train staff on Data protection and General Data Protection Regulation",43
+316,Agent,43
+317,Board members,43
+318,Prepare compliance reports to be sent to Financial Intelligence centre,42
+319,Prepare compliance reports to be sent to Bank of Ghana,42
+320,Policy reviews and update for entire business,42
+321,"Overall country updates in case of any flagged transaction, suspicious transactions and FSS",42
+322,In country regulation check list ,42
+323,Record and file Incident reports ,42
+324,Money Laundering Reporting ,42
+325,Record and file chargeback reports,42
+326,Review records and file complaints,42
+327,Compliance of posters in all agent locations ,42
+328,Compliance with educating customers on their rights and responsibilities,42
+329,Review fraud reports,42
+330,Monitor the investigation of complaints and alleged irregularity,42
+331,"Save on cost, by reducing Unit usuage of consumables by 20% monthly",15
+332,Referral SME,12
+333,Perform Partner Consumption Analysis Report to guide Sales/liquidity on Demand ,26
+334,Complete all retries in the day,44
+335,Perform hourly recon and sign off ,44
+336,Ensure all Monthly reports are sent to Partners,44
+337,Ensure all Zeepay system wallets per partner are reconcilied against OVA with detailed Ref# and Signed Off,44
+338,Hold a weekly Meeting with Service Delivery on Service Cordination Report to Leadership,44
+339,Provide a Successful Reversal Report to Finance + Service showing receipts from MNO with Ref,44
+340,Provide a Partial Reversal Report and Updated Monthly for Closure,44
+341,Ensure that incident reports are done on every Incident and filed,44
+342,Report daily on multiple credit by partner/ mno with values,44
+343,Charge back Report. Ensure Charge back Arbitration is filed and Reported to Leadership,44
+344,Complete reversals and log into system,26
+345,Complete retries within one off request,44
+346,Send SOAs to partners,44
+347,Perform hourly recon and sign off,44
+348,Ensure all wallets/trxn are reconciled daily for all MTOs,44
+349,Ensure all system wallets to OVA are reconciled and signed off,44
+350,Achieve an acceptable Service  Quality ranking,44
+351,Visa Settlement - Gateway,44
+352,Visa Settlement - Direct,44
+353,Mobile Money reporting,44
+354,Statement of Affairs - Banks,44
+355,Ensure Settlement reports are sent to partners 2nd working day of next month,44
+356,"responsible for inbound and outbound calls, maintain register for all calls",45
+357,receive and record all correspondence and maintain a register,45
+358,Maintain minutes for all leadership meetings as listed below and share minutes and action grid someday,45
+359,"Prepare travel and hotels, maintain a database of partners hotels and airbnb’s",45
+360,Maintain database of airlines and restaurants,45
+361,Ensure all travel staff have reward cards,45
+362,Manage memo’s for approval from MD’s office,45
+363,Manage register on travel Visa and advice on expiration,45
+364,Consumables should be purchased monthly and managed ,45
+365,Fumigation ,45
+366,Cleaning ,45
+367,Pool cleaning,45
+368,Maintain assets register,45
+369,Maintain vehicle maintenance register,45
+370,Maintain occurrence register,45
+371,Ensure the rents are paid across all zeepay offices ,45
+372,"Ensure the payment of phone bills, DSTV bills water bills and Electricity bills",45
+373,Handle sponsorship letters ,45
+374,Maintain MD’s diary,45
