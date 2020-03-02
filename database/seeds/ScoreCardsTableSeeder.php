@@ -23,12 +23,12 @@ class ScoreCardsTableSeeder extends Seeder
         [
 
             'id'=> '2',
-            'staff'=>'4',
+            'staff'=>'3',
             'period'=>'01-2020',
-            'last_updated_by'=>'4'
+            'last_updated_by'=>'3'
 
         ]
-        
+
         ]);
     }
 }
