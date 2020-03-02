@@ -6,14 +6,14 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-9" style="margin-top: 10px;">
+                <form action="{{ route('save.scorecard', $scorecard['id']) }}" method="post">
+                <div class="col-md-12" style="margin-top: 10px;">
                 <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
                 </div>
-                <div class="col-md-3" style="text-align: right; margin-bottom: 5px;">
-                    <form action="{{ route('save.scorecard', $scorecard['id']) }}" method="post">
-                        {{-- @if(Auth::user()->role < 3)
-                            <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#default"> Copy <i class="la la-disc"></i></button>
-                        @endif --}}
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="text-align: right; margin-bottom: 5px;">
+                    <span>Comments: </span><input type="text" style="width:80%">
                     <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
                 </div>
             </div>
@@ -96,6 +96,9 @@
                                     @endfor
                                         <tr style="background-color:#343a40; color:#fff !important;">
                                             <td colspan="7" style="text-align: right; font-weight: 800"><h5 style="color:#fff;">Total Score:<b> {{ round($scorecard['total_score'], 2) }} %</b></h5></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td><td><textarea style="border:1px solid black; border-radius:5px;" name="" id="" cols="30" rows="5"></textarea></td>
                                         </tr>
                                 </form>
                             </tbody>
