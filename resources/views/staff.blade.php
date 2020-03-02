@@ -51,9 +51,9 @@
                                         <td>{{ $staff[$i]['email'] }}</td> 
                                         <td>{{ $staff[$i]['department']['description'] }}</td> 
                                         <td>{{ $staff[$i]['role']['description'] }}</td>
-                                        <td><button data-target="modal" class="btn btn-warning" style="padding: 0.3rem 0.5rem;"><i class="la la-eye"></i></button>
+                                        <td><button data-target="modal" class="btn btn-info" style="padding: 0.3rem 0.5rem;;margin-right:1.5rem;"><i class="la la-eye"></i></button>
                                             @if((Auth::user()->role)==1)
-                                                <a href="{{ route('delete.staff', $staff[$i]['id']) }}"><button class="btn btn-info" style="padding: 0.3rem 0.5rem;"><i class="la la-trash"></i></button></a>
+                                                <a href="{{ route('delete.staff', $staff[$i]['id']) }}"><button class="btn btn-danger" style="padding: 0.3rem 0.5rem;"><i class="la la-trash"></i></button></a>
                                             @endif
                                         </td>
                                     </tr>
