@@ -28,9 +28,9 @@
 29,Per Budget,25
 30,Min. of 3 per month,26
 31,Min. of 3 per month,27
-32,Min. of 3 per month ,28
-33,Min. of 3 per month ,29
-34,Min. of 3 customer per month ,30
+32,Min. of 3 per month,28
+33,Min. of 3 per month,29
+34,Min. of 3 customer per month,30
 35,100% Achievement,31
 36,100% Achievement,32
 37,100% Achievement,33
@@ -45,12 +45,12 @@
 67,100% Achievement,63
 68,Min. of 2 per month,64
 69,Min. of 2 per month,65
-70,100% Achieved  ,66
-71,100% Achieved ,67
-72,Min. of 2 customer per month ,68
-73,100% Achieved ,69
-74,Monthly ,70
-75,Min of 70% of all trading ,71
+70,100% Achieved,66
+71,100% Achieved,67
+72,Min. of 2 customer per month,68
+73,100% Achieved,69
+74,Monthly,70
+75,Min of 70% of all trading,71
 76,100% Achievement,72
 77,100% Achievement,73
 78,1 Monthly,74
@@ -122,9 +122,9 @@
 234, Weekly,230
 235,Quarterly,231
 236,Quarterly,232
-237,As and when ,233
+237,As and when,233
 238,Monthly,234
-239,Quarterly ,235
+239,Quarterly,235
 240,20 Monthly,236
 241,Monthly,22
 242,2 Monthly,41
@@ -133,7 +133,7 @@
 245,monthly,239
 246,monthly,240
 247,monthly,241
-248, annual,242
+248,ï¿½annual,242
 249,monthly,243
 250,Monthly,244
 251,Monthly,245
@@ -188,41 +188,41 @@
 300,weekly,293
 301,by the end of first quarter,294
 302,by the third quarter,295
-303,quarterly ,296
-304,once a year ,297
-305,quarterly ,298
+303,quarterly,296
+304,once a year,297
+305,quarterly,298
 306,monthly,299
 307,Daily,300
-308,as and when ,301
-309,as and when ,302
+308,as and when,301
+309,as and when,302
 310,monthly,303
 311,monthly,304
-312,quarterly ,305
-313,as and when ,306
+312,quarterly,305
+313,as and when,306
 314,Monthly,307
 315,Daily,308
-316,Annually ,309
+316,Annually,309
 317,Min 2 per year,310
 318,Every quarter,311
 319,Every quarter,312
-320,Twice in a year ,313
+320,Twice in a year,313
 321,Once a year,314
 322,Once a year,315
-323,once a year ,316
-324,once a year ,317
+323,once a year,316
+324,once a year,317
 325,monthly,318
 326,monthly,319
 327,before the end of the first quarter,320
 328,monthly,321
 329,monthly,322
 330,monthly,323
-331,Monthly ,324
+331,Monthly,324
 332,Monthly,325
 333,Monthly,326
 334,quarterly,327
-335,Quarterly ,328
+335,Quarterly,328
 336,monthly,329
-337,Monthly ,330
+337,Monthly,330
 338,Monthly savings against budget,331
 339,1 Monthly,332
 340,Daily/Monthly/Weekened/Monthly,333
@@ -235,7 +235,7 @@
 347,Daily/Monthly,340
 348,After Every Incident,341
 349,Daily,342
-350,Daily ,343
+350,Dailyï¿½,343
 351,Daily,344
 352,Daily,345
 353,Daily,346
