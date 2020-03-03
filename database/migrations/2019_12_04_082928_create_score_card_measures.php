@@ -19,6 +19,7 @@ class CreateScoreCardMeasures extends Migration
             $table->String('objective');
             $table->timestamp('created_at')->useCurrent(); 
             $table->timestamp('updated_at')->useCurrent();
+            
         });
     }
 

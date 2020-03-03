@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class StaffTableSeeder extends Seeder
 {
@@ -22,13 +23,6 @@ class StaffTableSeeder extends Seeder
         [
             'name' => "Felicity Jaforktuk",
             'email' => 'fj@myzeepay.com',
-            'department' => '2',
-            'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
-            'role' => "3"
-        ],
-        [
-            'name' => "Ernest Adu Owusu",
-            'email' => 'eao@myzeepay.com',
             'department' => '2',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
             'role' => "3"
@@ -80,7 +74,7 @@ class StaffTableSeeder extends Seeder
             'email' => 'gk@myzeepay.com',
             'department' => '4',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
-            'role' => "3"
+            'role' => "2"
         ],
         [
             'name' => "Cecil Fixon-Owoo",
@@ -90,7 +84,7 @@ class StaffTableSeeder extends Seeder
             'role' => "2"
         ],
         [
-            'name' => "Samuel Kwadwo Tuffuor",
+            'name' => "Samuel Kwadwo Tuffour",
             'email' => 'skt@myzeepay.com',
             'department' => '8',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
@@ -106,13 +100,6 @@ class StaffTableSeeder extends Seeder
         [
             'name' => "Nii Odoi Charway",
             'email' => 'nic@myzeepay.com',
-            'department' => '7',
-            'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
-            'role' => "3"
-        ],
-        [
-            'name' => "Christiana Otuko Miyante Odonkor",
-            'email' => 'como@myzeepay.com',
             'department' => '7',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
             'role' => "3"
@@ -159,25 +146,11 @@ class StaffTableSeeder extends Seeder
             'role' => "3"
         ],
         [
-            'name' => "Adwoa Konadu Appiah",
-            'email' => 'aak@myzeepay.com',
-            'department' => '1',
-            'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
-            'role' => "3"
-        ],
-        [
             'name' => "Kingsley Nabla",
             'email' => 'kn@myzeepay.com',
             'department' => '1',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
             'role' => "3"
-        ],
-        [
-            'name' => "Yaa Serwaa Seidu",
-            'email' => 'yss@myzeepay.com',
-            'department' => '6',
-            'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", //password
-            'role' => "2"
         ]
 
         ]);

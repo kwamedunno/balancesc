@@ -61,7 +61,9 @@
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">{{ Auth::user()->name }}</span><span class="avatar avatar-online"><img src="{{asset('app-assets/images/icons/user_icon.png')}}" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="material-icons">power_settings_new</i> Logout</a>
+                                <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('reset.password') }}"><i class="material-icons">lock</i> Change Password</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"><i class="material-icons">power_settings_new</i> Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -105,7 +107,7 @@
     <!-- BEGIN: Footer-->
     <br><br><br>
     <footer class="footer footer-transparent footer-light navbar-shadow fixed-bottom">
-        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout"><span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2020 <a class="text-bold-800 grey darken-2" href="https://myzeepay.com" target="_blank">ZeePay</a></span></span></p>
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout"><span class="float-md-left d-block d-md-inline-block">Copyright &copy; {{ now()->year }} <a class="text-bold-800 grey darken-2" href="https://myzeepay.com" target="_blank"><span style="color:#da3832">Zee</span><span style="color:#b1cd53">Pay</span></a></span></span></p>
     </footer>
     <!-- END: Footer-->
 

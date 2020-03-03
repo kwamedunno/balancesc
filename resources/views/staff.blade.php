@@ -21,6 +21,14 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
+            @if(session()->has('deleted'))
+            <div class="alert alert-danger alert-dismissible mb-2" style="color: #fff !important;" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                {{ session()->get('deleted') }}
+            </div>
+        @endif
             <div class="card" style="">
                 <div class="card-content collapse show">
                     <div class="card-body">
@@ -43,7 +51,11 @@
                                         <td>{{ $staff[$i]['email'] }}</td> 
                                         <td>{{ $staff[$i]['department']['description'] }}</td> 
                                         <td>{{ $staff[$i]['role']['description'] }}</td>
-                                        <td><button data-target="modal" class="btn btn-warning" style="padding: 0.3rem 0.5rem;"><i class="la la-eye"></i></button></td>
+                                        <td><button data-target="modal" class="btn btn-info" style="padding: 0.3rem 0.5rem;;margin-right:1.5rem;"><i class="la la-eye"></i></button>
+                                            @if((Auth::user()->role)==1)
+                                                <a href="{{ route('delete.staff', $staff[$i]['id']) }}"><button class="btn btn-danger" style="padding: 0.3rem 0.5rem;"><i class="la la-trash"></i></button></a>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endfor
                             </tbody>

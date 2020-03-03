@@ -11,8 +11,10 @@ use App\Objective;
 use App\ScoreCard;
 use App\ScoreCardMetric;
 
+use App\ScoreCardMeasure;
 use App\ScoreCardObjective;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScoreCardsController extends Controller
 {
@@ -22,6 +24,7 @@ class ScoreCardsController extends Controller
     }
 
     public function showScoreCards(){
+
         try {
             //code...
             if (Auth::user()->role == 1) {
@@ -49,6 +52,7 @@ class ScoreCardsController extends Controller
                 ->with('scorecards', $scorecards);
 
         } 
+        
         catch (\Exception $e) {
 
             Log::error("\t".$e->getTraceAsString());
@@ -61,10 +65,10 @@ class ScoreCardsController extends Controller
     }                 
     
     
-    public function showCreateScoreCard(){
-        return view('scorecard.add')
-            ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray());
-    }
+    // public function showCreateScoreCard(){
+    //     return view('scorecard.add')
+    //         ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray());
+    // }
 
 
     public function showViewScoreCard($id){
@@ -75,6 +79,8 @@ class ScoreCardsController extends Controller
         $metrics = ScoreCardMetric::where('scorecard', '=', $id)->orderBy('id', 'asc')->get()->toArray();
         $scorecard['total_score'] = 0;
         $scorecard['target_weight'] = 0;
+        $entire_staff = Staff::with('role','department')->get()->toArray();
+
         for ($i=0; $i < (sizeof($metrics)) ; $i++) { 
             $scorecard['total_score'] += ($metrics[$i]['score'] * $metrics[$i]['weight']) / $metrics[$i]['target']; //score
         }
@@ -82,6 +88,7 @@ class ScoreCardsController extends Controller
         return view('scorecard.view')
             ->with('objectives', $objectives)
             ->with('scorecard', $scorecard)
+            ->with('entire_staff',$entire_staff)
             ->with('metrics', $metrics);
 
         
@@ -102,6 +109,93 @@ class ScoreCardsController extends Controller
                 ->with('success', 'Score Card Saved');
     }
 
+    // Saving created scorecard
+    public function saveCreatedScoreCard(Request $request){
+        $metrics = $measures_id = $objectives_id = $parent_objectives_id = [];
+        $count=0;
+        for ($i=0; $i < count(Metric::get()) ; $i++) { 
+
+            if (!is_null($request->input('target_'.$i)) && (!is_null($request->input('weight_'.$i)))) {
+                $metrics[$count]['id'] = ($request->input('metric_'.$i));
+                $metrics[$count]['target'] = ($request->input('target_'.$i));
+                $metrics[$count]['weight'] = ($request->input('weight_'.$i));
+                $measures_id[$i] = Metric::where('id', '=', $metrics[$count]['id'])->first()->measure;
+                $metrics[$count]['measure'] = $measures_id[$i];
+                $count++;
+            }
+        }
+
+        $measures_id = (array_values(array_unique($measures_id)));
+
+        for ($i=0; $i < (sizeof($measures_id)); $i++) { 
+            $objectives_id[$i] = Measure::where('id', '=', $measures_id[$i])->first()->objective;
+        }
+
+        $objectives_id = array_values(array_unique(($objectives_id)));
+
+        for ($i=0; $i < (sizeof($objectives_id)); $i++) { 
+            $parent_objectives_id[$i]= Objective::where('id', '=', $objectives_id[$i])->first()->parent;
+        }
+
+        $parent_objectives_id = array_values(array_unique($parent_objectives_id));
+
+        $scorecard = New ScoreCard;
+        $scorecard->staff = $request->staff;
+        $scorecard->period = $request->month."-".$request->year;
+        $scorecard->last_updated_by = Auth::user()->id;
+        $scorecard->save();
+
+        
+
+        for ($i=0; $i < sizeof($parent_objectives_id); $i++) { 
+            $scorecardParentObjective = new ScoreCardObjective;
+            $scorecardParentObjective->score_card = $scorecard->id;
+            $scorecardParentObjective->objective = $parent_objectives_id[$i];
+
+            $scorecardParentObjective->save();
+            for ($j=0; $j <(sizeof($objectives_id)); $j++) { 
+                $scorecardObjectiveActual = Objective::where('id', '=', $objectives_id[$j])->first();
+
+                if ($scorecardObjectiveActual->parent == $scorecardParentObjective->objective) {
+                    $scorecardObjective = new ScoreCardObjective;
+                    $scorecardObjective->score_card = $scorecard->id;
+                    $scorecardObjective->objective = $objectives_id[$j];
+                    $scorecardObjective->parent = $scorecardParentObjective->id;
+                    $scorecardObjective->save();
+
+                    for ($k=0; $k < (sizeof($measures_id)); $k++) { 
+                        $scorecardMeasureActual = Measure::where('id','=',$measures_id[$k])->first();
+    
+                        if($scorecardMeasureActual->objective == $scorecardObjective->objective){
+                            
+                            $scorecardMeasure = new ScoreCardMeasure;
+                            $scorecardMeasure->objective = $scorecardObjective->id;
+                            $scorecardMeasure->measure = $measures_id[$k];
+                            $scorecardMeasure->save();
+                            
+                            for ($l=0; $l < (sizeof($metrics)); $l++) {
+                                $scorecardMetricActual = Metric::where('id','=',$metrics[$l]['id'])->first();
+
+                                if($scorecardMetricActual->measure == $scorecardMeasure->measure){
+                                    $scorecardMetric = new ScoreCardMetric;
+                                    $scorecardMetric->metric = $metrics[$l]['id'];
+                                    $scorecardMetric->scorecard = $scorecard->id;
+                                    $scorecardMetric->measure = $scorecardMeasure->id;
+                                    $scorecardMetric->score = 1;
+                                    $scorecardMetric->target = $metrics[$l]['target'];
+                                    $scorecardMetric->weight = $metrics[$l]['weight'];
+                                    $scorecardMetric->save();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return redirect()->back()
+                ->with('success', 'Score Card Created');
+    }
+
     //viewing the create scorecard page
     public function createScoreCard(){
         $staff = Staff::where('department','=',Auth::user()->department)->where('role','>=',Auth::user()->role)->get()->toArray();
@@ -110,13 +204,20 @@ class ScoreCardsController extends Controller
         return view('scorecard.create')
             ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray())
             ->with('staff',$staff)
-            ->with('entirestaff',$entire_staff);
+            ->with('entire_staff',$entire_staff);
     }
 
-    //Saving created scorecard
-    // public function saveCreatedScoreCard(){
-    //     $scorecard_name = new ScoreCard::where
-    // }
+    public function deleteScoreCard($id){
+        $scorecard = ScoreCard::where('id','=', $id)->first();
+        $scorecard->delete();
+
+        return redirect()->back()
+            ->with('deleted','Score Card has been deleted');
+
+        
+    }
+
+
 
     
 }

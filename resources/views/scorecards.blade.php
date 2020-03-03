@@ -24,6 +24,14 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
+            @if(session()->has('deleted'))
+                <div class="alert alert-danger alert-dismissible mb-2" style="color: #fff !important;" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    {{ session()->get('deleted') }}
+                </div>
+            @endif
             <div class="card" style="">
                 <div class="card-content collapse show">
                     <div class="card-body">
@@ -35,18 +43,23 @@
                                     <th>Staff Department</th>
                                     <th>Period</th>
                                     <th>Last Updated By</th>
-                                    <th>Action</th>
+                                    <th style="min-width:80px;">Action</th>
                                 </tr>
                             </thead>
                             <tbody> 
                                 @for($i=0; $i<sizeof($scorecards); $i++) 
                                     <tr>
                                         <td>{{ $scorecards[$i]['id'] }}</td>
-                                        <td>{{ $scorecards[$i]['staff']['name'] }}</td> 
+                                        <td>{{ $scorecards[$i]['staff']['name'] }}</td>
                                         <td>{{ $scorecards[$i]['staff']['department']['description'] }}</td> 
                                         <td width="70px;">{{ $scorecards[$i]['period'] }}</td> 
                                         <td>{{ $scorecards[$i]['last_updated_by']['name'] }} at {{ $scorecards[$i]['updated_at'] }}</td> 
-                                        <td><a href="{{ route('show.view.scorecard', $scorecards[$i]['id']) }}"><button class="btn btn-info" style="padding: 0.3rem 0.5rem;"><i class="la la-eye"></i></button></td></a>
+                                        <td><a href="{{ route('show.view.scorecard', $scorecards[$i]['id']) }}" ><button class="btn btn-info" style="padding: 0.3rem 0.5rem;margin-right:1.5rem;"><i class="la la-eye"></i></button></a>
+                                            @if((Auth::user()->role)==1)
+                                                <a href="{{ route('delete.scorecard', $scorecards[$i]['id']) }}"><button class="btn btn-danger" style="padding: 0.3rem 0.5rem;"><i class="la la-trash"></i></button></a>
+                                            @endif
+                                        </td>
+                                         
                                     </tr>
                                 @endfor
                             </tbody>

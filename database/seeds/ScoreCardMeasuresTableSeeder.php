@@ -7,7 +7,7 @@ class ScoreCardMeasuresTableSeeder extends CsvSeeder
     public function __construct()
 	{
 		$this->table = 'score_card_measures';
-        $this->filename = base_path().'/database/seeds/csvs/score_card_measures.csv';
+        $this->filename = base_path().'/database/seeds/csvs/score_card_measures_2.csv';
         $this->mapping = [
             0 => 'measure',
             1 => 'objective',
