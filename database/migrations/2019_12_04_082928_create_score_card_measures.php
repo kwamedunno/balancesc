@@ -15,7 +15,7 @@ class CreateScoreCardMeasures extends Migration
     {
         Schema::create('score_card_measures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('measure');
+            $table->text('measure');
             $table->String('objective');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
