@@ -15,7 +15,7 @@ class CreateMeasuresTable extends Migration
     {
         Schema::create('measures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('description');
+            $table->longText('description');
             $table->String('objective');
             $table->timestamp('created_at')->useCurrent(); 
             $table->timestamp('updated_at')->useCurrent();

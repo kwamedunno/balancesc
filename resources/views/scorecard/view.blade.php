@@ -11,12 +11,12 @@
                 <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12" style="text-align: right; margin-bottom: 5px;">
                     <span>Comments: </span><input type="text" style="width:80%">
                     <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
                 </div>
-            </div>
+            </div> --}}
             @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible mb-2" style="color: #fff !important;" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -97,9 +97,9 @@
                                         <tr style="background-color:#343a40; color:#fff !important;">
                                             <td colspan="7" style="text-align: right; font-weight: 800"><h5 style="color:#fff;">Total Score:<b> {{ round($scorecard['total_score'], 2) }} %</b></h5></td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <td></td><td></td><td></td><td></td><td></td><td></td><td><textarea style="border:1px solid black; border-radius:5px;" name="" id="" cols="30" rows="5"></textarea></td>
-                                        </tr>
+                                        </tr> --}}
                                 </form>
                             </tbody>
                             <tfoot>

@@ -112,11 +112,12 @@ class ScoreCardsController extends Controller
         $metrics = $measures_id = $objectives_id = $parent_objectives_id = [];
         $count=0;
         for ($i=0; $i < count(Metric::get()) ; $i++) { 
-
-            if (!is_null($request->input('target_'.$i)) && (!is_null($request->input('weight_'.$i)))) {
-                $metrics[$count]['id'] = ($request->input('metric_'.$i));
-                $metrics[$count]['target'] = ($request->input('target_'.$i));
-                $metrics[$count]['weight'] = ($request->input('weight_'.$i));
+            $all_metrics = Metric::all()->toArray();
+            if (!is_null($request->input('target_'.$all_metrics[$i]['id'])) && (!is_null($request->input('weight_'.$all_metrics[$i]['id'])))) {
+                
+                $metrics[$count]['id'] = ($request->input('metric_'.$all_metrics[$i]['id']));
+                $metrics[$count]['target'] = ($request->input('target_'.$all_metrics[$i]['id']));
+                $metrics[$count]['weight'] = ($request->input('weight_'.$all_metrics[$i]['id']));
                 $measures_id[$i] = Metric::where('id', '=', $metrics[$count]['id'])->first()->measure;
                 $metrics[$count]['measure'] = $measures_id[$i];
                 $count++;
@@ -124,7 +125,6 @@ class ScoreCardsController extends Controller
         }
 
         $measures_id = (array_values(array_unique($measures_id)));
-
         for ($i=0; $i < (sizeof($measures_id)); $i++) { 
             $objectives_id[$i] = Measure::where('id', '=', $measures_id[$i])->first()->objective;
         }
