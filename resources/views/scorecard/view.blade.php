@@ -11,12 +11,12 @@
                 <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
                 </div>
             </div>
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-md-12" style="text-align: right; margin-bottom: 5px;">
-                    <span>Comments: </span><input type="text" style="width:80%">
+                    {{-- <span>Comments: </span><input type="text" style="width:80%"> --}}
                     <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
                 </div>
-            </div> --}}
+            </div>
             @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible mb-2" style="color: #fff !important;" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
