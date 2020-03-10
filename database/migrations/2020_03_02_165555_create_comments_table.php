@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMeasuresTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateMeasuresTable extends Migration
      */
     public function up()
     {
-        Schema::create('measures', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('description');
-            $table->String('objective');
-            $table->timestamp('created_at')->useCurrent(); 
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
@@ -29,6 +26,6 @@ class CreateMeasuresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('measures');
+        Schema::dropIfExists('comments');
     }
 }

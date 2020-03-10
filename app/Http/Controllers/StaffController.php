@@ -62,8 +62,7 @@ class StaffController extends Controller
     public function deleteStaff($id){
         $staff = Staff::where('id','=', $id)->first();
         $staff->delete();
-        $scorecard = ScoreCard::where('staff','=', $id)->first();
-        $scorecard->delete();
+        $scorecard = ScoreCard::where('staff','=', $id)->delete();
 
         return redirect()->back()
             ->with('deleted','Staff has been deleted');
