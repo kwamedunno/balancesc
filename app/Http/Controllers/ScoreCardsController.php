@@ -179,7 +179,7 @@ class ScoreCardsController extends Controller
                                     $scorecardMetric->metric = $metrics[$l]['id'];
                                     $scorecardMetric->scorecard = $scorecard->id;
                                     $scorecardMetric->measure = $scorecardMeasure->id;
-                                    $scorecardMetric->score = 1;
+                                    $scorecardMetric->score = 0;
                                     $scorecardMetric->target = $metrics[$l]['target'];
                                     $scorecardMetric->weight = $metrics[$l]['weight'];
                                     $scorecardMetric->save();
