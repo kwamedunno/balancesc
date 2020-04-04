@@ -11,9 +11,6 @@
 |
 */
 
-//Google Login routes
-Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
-Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
 
 Route::get('/', 'Auth\LoginController@showLogin')->name('show.login');
 Route::post('/', 'Auth\LoginController@login')->name('process.login');
