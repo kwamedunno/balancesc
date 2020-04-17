@@ -25,7 +25,7 @@ class StaffController extends Controller
             $departments = Department::get()->toArray();
         }elseif(Auth::user()->role == 2){
             # show only staff in that department
-            $staff = Staff::where('department', '=', Auth::user()->department)->where('role', '<', Auth::user()->role)->with('role', 'department')->get()->toArray();
+            $staff = Staff::where('department', '=', Auth::user()->department)->where('role', '>', Auth::user()->role)->with('role', 'department')->get()->toArray();
             $departments = Department::where('id', '=', Auth::user()->department)->get()->toArray();
         }else{
             # Permission denied
@@ -69,5 +69,18 @@ class StaffController extends Controller
 
         
     }
+
+    public function editStaff(Request $request){
+
+        //returns staff with id 
+        $staff= Staff::find($request->name);
+        $staff->role = $request->role;
+        $staff->department = $request->department;
+        $staff->save();
+
+        return redirect()->back()
+        ->with('upated','Staff has been updated');
+    }
+    
 
 }

@@ -83,6 +83,8 @@
                     @if(Auth::user()->role<=2)
                     <li class="dropdown nav-item" data-menu=""><a class="nav-link" href="{{ route('show.staff') }}" data-toggle=""><i class="material-icons">people</i><span>Staff</span></a>
                     </li>
+                    @endif
+                    @if(Auth::user()->role==1)
                     <li class="dropdown nav-item" data-menu="dropdown"><a class="nav-link" href="{{ route('show.departments') }}" data-toggle=""><i class="material-icons">view_comfy</i><span>Departments</span></a>
                     </li>
                     @endif
