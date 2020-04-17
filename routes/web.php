@@ -11,9 +11,6 @@
 |
 */
 
-//Google Login routes
-Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
-Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
 
 Route::get('/', 'Auth\LoginController@showLogin')->name('show.login');
 Route::post('/', 'Auth\LoginController@login')->name('process.login');
@@ -36,6 +33,7 @@ Route::post('/departments','DepartmentController@addDepartment')->name('add.depa
 Route::get('/staff','StaffController@showStaff')->name('show.staff');
 Route::post('/staff','StaffController@addStaff')->name('add.staff');
 Route::get('/staff/delete/{id}','StaffController@deleteStaff')->name('delete.staff');
+Route::post('/staff/edit','StaffController@editStaff')->name('edit.staff');
 
 
 
