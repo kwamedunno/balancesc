@@ -12,6 +12,4 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css')
-   .js('resources/js/scorecard/view.js', 'public/js/scorecard')
-   .js('resources/js/scorecard/create.js', 'public/js/scorecard');
+   .sass('resources/sass/app.scss', 'public/css');

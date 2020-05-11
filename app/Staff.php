@@ -42,5 +42,9 @@ class Staff extends Authenticatable
         return $this->hasOne('App\Department', 'id', 'department' );
     }
 
+    public function scorecard(){
+            return $this->hasMany('App\ScoreCard','staff','id');
+    }
+
 
 }

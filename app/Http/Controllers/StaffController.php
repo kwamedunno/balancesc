@@ -82,5 +82,11 @@ class StaffController extends Controller
         ->with('upated','Staff has been updated');
     }
     
+    public function calcAverageTotal($id){
+        
+        $staff = Staff::where('id','=',$id)->pluck('id')->toArray();
+        $scorecards = Scorecard::where('staff','=',$staff)->get();
+        dd($scorecards);
+    }
 
 }
