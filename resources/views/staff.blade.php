@@ -51,6 +51,7 @@
                                     <th>Email</th>
                                     <th>Department</th>
                                     <th>Role</th>
+                                    <th>Average</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -62,6 +63,7 @@
                                         <td>{{ $staff[$i]['email'] }}</td> 
                                         <td>{{ $staff[$i]['department']['description'] }}</td> 
                                         <td>{{ $staff[$i]['role']['description'] }}</td>
+                                        <td>{{ $scorecard['averagetotal'] }}</td>
                                         <td><button data-target="modal" class="btn btn-info" style="padding: 0.3rem 0.5rem;;margin-right:1.5rem;"><i class="la la-eye"></i></button>
                                             @if((Auth::user()->role)==1)
                                                 <a href="{{ route('delete.staff', $staff[$i]['id']) }}" onclick="return confirm('Are you sure?')"><button class="btn btn-danger" style="padding: 0.3rem 0.5rem;"><i class="la la-trash"></i></button></a>

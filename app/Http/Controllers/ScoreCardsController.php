@@ -84,6 +84,12 @@ class ScoreCardsController extends Controller
         for ($i=0; $i < (sizeof($metrics)) ; $i++) { 
             $scorecard['total_score'] += ($metrics[$i]['score'] * $metrics[$i]['weight']) / $metrics[$i]['target']; //score
         }
+        $savedcard = ScoreCard::where('id','=',$id)->first();
+        $savedcard->total_score = $scorecard['total_score'];
+        $savedcard->save();
+
+        // $saved_score = Scorecard::find($id->scorecard_id);
+        // $scorecard['total_score'] => $saved_score['total_score'];
 
         return view('scorecard.view')
             ->with('objectives', $objectives)

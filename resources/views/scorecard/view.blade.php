@@ -6,10 +6,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <form action="{{ route('save.scorecard', $scorecard['id']) }}" method="post">
-                <div class="col-md-12" style="margin-top: 10px;">
-                <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
-                </div>
+        <form action="{{ route('save.scorecard', $scorecard['id']) }}" method="post">
+                    <div class="col-md-12" style="margin-top: 10px;">
+                        <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
+                    </div>
             </div>
             <div class="row">
                 <div class="col-md-12" style="text-align: right; margin-bottom: 5px;">
@@ -100,11 +100,18 @@
                                         {{-- <tr>
                                             <td></td><td></td><td></td><td></td><td></td><td></td><td><textarea style="border:1px solid black; border-radius:5px;" name="" id="" cols="30" rows="5"></textarea></td>
                                         </tr> --}}
-                                </form>
+                               
                             </tbody>
                             <tfoot>
                             </tfoot>
                         </table>
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: right; margin-bottom: 5px;">
+                                {{-- <span>Comments: </span><input type="text" style="width:80%"> --}}
+                                <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
+                            </div>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>

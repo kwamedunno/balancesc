@@ -21,17 +21,24 @@ class StaffController extends Controller
     public function showStaff(){
         if (Auth::user()->role == 1) {
             # show all
-            $staff = Staff::with('role', 'department')->get()->toArray();
+            $staff = Staff::with('role', 'department','scorecard')->get()->toArray();
             $departments = Department::get()->toArray();
         }elseif(Auth::user()->role == 2){
             # show only staff in that department
-            $staff = Staff::where('department', '=', Auth::user()->department)->where('role', '>', Auth::user()->role)->with('role', 'department')->get()->toArray();
+            $staff = Staff::where('department', '=', Auth::user()->department)->where('role', '>', Auth::user()->role)->with('role', 'department','scorecard')->get()->toArray();
             $departments = Department::where('id', '=', Auth::user()->department)->get()->toArray();
         }else{
             # Permission denied
             return redirect()->back()
                 ->with('error', 'Permission Denied');
         }
+        $scorecards = Scorecard::where('staff','=',$staff)->get()->toArray();
+        $scorecard = Scorecard::where('staff','=',$staff)->first();
+        $scorecard['averagetotal']=0;
+        for ($i=0; $i < sizeof($scorecards) ; $i++) { 
+            $scorecard['averagetotal'] += $scorecards[$i]->total_score;
+        }
+        
 
 
 
@@ -87,6 +94,7 @@ class StaffController extends Controller
         $staff = Staff::where('id','=',$id)->pluck('id')->toArray();
         $scorecards = Scorecard::where('staff','=',$staff)->get();
         dd($scorecards);
+
     }
 
 }
