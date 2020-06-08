@@ -96,7 +96,7 @@ class ScoreCardsController extends Controller
             ->with('scorecard', $scorecard)
             ->with('entire_staff',$entire_staff)
             ->with('metrics', $metrics);
-
+        
         
     }
     
