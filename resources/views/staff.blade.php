@@ -202,6 +202,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="department">Reset Password</label>
+                                    <input id="password_reset" name="password_reset" class="form-control" placeholder="Enter staff password" type="text">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn danger btn-outline-danger" data-dismiss="modal">Close</button>

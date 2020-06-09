@@ -110,6 +110,9 @@ class StaffController extends Controller
         $staff= Staff::find($request->name);
         $staff->role = $request->role;
         $staff->department = $request->department;
+        if($request->password_reset !=null){
+            $staff->password = Hash::make($request->password_reset);
+        }
         $staff->save();
 
         return redirect()->back()
