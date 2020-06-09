@@ -32,21 +32,48 @@ class StaffController extends Controller
             return redirect()->back()
                 ->with('error', 'Permission Denied');
         }
-        $scorecards = Scorecard::where('staff','=',$staff)->get()->toArray();
-        $scorecard = Scorecard::where('staff','=',$staff)->first();
-        $scorecard['averagetotal']=0;
-        for ($i=0; $i < sizeof($scorecards) ; $i++) { 
-            $scorecard['averagetotal'] += $scorecards[$i]->total_score;
+        $scoredStaff = Staff::with('scorecard')->get()->toArray();
+        
+        
+        
+        for ($i=0; $i<sizeof($scoredStaff); $i++) {
+            $averagescore=0;
+            $scoredStaff[$i]['averagescore'] = 0;
+            $scorecards = ScoreCard::where('staff','=',$scoredStaff[$i])->get()->toArray();
+
+            if (sizeof($scorecards)>0){
+                for ($j=0; $j < sizeof($scorecards); $j++) {
+                    $averagescore += ($scorecards[$j]['total_score']);
+                }
+            $scoredStaff[$i]['averagescore'] = $averagescore/sizeof($scorecards);
+            }
         }
         
-
-
-
         return view('staff')
             ->with('staff', $staff)
+            ->with('scoredStaff',$scoredStaff)
             ->with('roles', Role::where('id', '>=', Auth::user()->role)->get()->toArray())
             ->with('departments', $departments);
     }
+
+    public function showProfile($id){
+            $staff = Staff::where('id','=', $id)->with('scorecard')->get()->first();
+            $averagescore=0;
+            $staff['averagescore'] = 0;
+            $scorecards = ScoreCard::where('staff','=',$staff['id'])->get()->toArray();
+
+            if (sizeof($scorecards)>0){
+                for ($j=0; $j < sizeof($scorecards); $j++) {
+                    $averagescore += ($scorecards[$j]['total_score']);
+                }
+            $staff['averagescore'] = $averagescore/sizeof($scorecards);
+            }
+            
+            
+            return view('staff/profile')
+                ->with('staff', $staff)
+                ->with('scorecards',$scorecards);
+        }
 
     public function addStaff(Request $request){
         /* Add Staff */
@@ -89,12 +116,5 @@ class StaffController extends Controller
         ->with('upated','Staff has been updated');
     }
     
-    public function calcAverageTotal($id){
-        
-        $staff = Staff::where('id','=',$id)->pluck('id')->toArray();
-        $scorecards = Scorecard::where('staff','=',$staff)->get();
-        dd($scorecards);
-
-    }
 
 }

@@ -20,7 +20,7 @@ class LoginController extends Controller
 
     public function login(Request $request){
         if(Auth::guard('staff')->attempt(['email' => $request->username, 'password' => $request->password], $request->remember)){
-            return redirect()->route('show.scorecards');
+            return redirect()->route('show.profile',Auth::user()->id);
         }
 
         return view('login')

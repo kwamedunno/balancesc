@@ -34,12 +34,8 @@ Route::get('/staff','StaffController@showStaff')->name('show.staff');
 Route::post('/staff','StaffController@addStaff')->name('add.staff');
 Route::get('/staff/delete/{id}','StaffController@deleteStaff')->name('delete.staff');
 Route::post('/staff/edit','StaffController@editStaff')->name('edit.staff');
-Route::get('/staff/calculate/{id}','StaffController@calcAverageTotal')->name('calc.totalscore');
+Route::get('/staff/profile/{id}','StaffController@showProfile')->name('show.profile');
 
 
 
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
