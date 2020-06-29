@@ -17,6 +17,7 @@ class ScoreCardsTableSeeder extends Seeder
             'id'=> '1',
             'staff'=>'2',
             'period'=>'01-2020',
+            'total_score'=> '66',
             'last_updated_by'=>'2'
 
         ],
@@ -25,6 +26,7 @@ class ScoreCardsTableSeeder extends Seeder
             'id'=> '2',
             'staff'=>'3',
             'period'=>'01-2020',
+            'total_score'=>'60',
             'last_updated_by'=>'3'
 
         ]

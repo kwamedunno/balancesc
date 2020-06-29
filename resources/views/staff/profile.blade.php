@@ -45,14 +45,14 @@
                                     <th>Score</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>
+                            </thead> 
                             <tbody> 
                                 @for($i=0; $i<sizeof($scorecards); $i++) 
                                     <tr>
                                         <td>{{ $scorecards[$i]['id'] }}</td>
                                         <td>{{ $scorecards[$i]['period'] }}</td>
                                         <td>{{ $scorecards[$i]['total_score'] }}</td> 
-                                        <td><button data-target="modal" class="btn btn-info" style="padding: 0.3rem 0.5rem;;margin-right:1.5rem;"><i class="la la-eye"></i></button>
+                                        <td><a href="{{ route('show.view.scorecard', $scorecards[$i]['id']) }}" ><button data-target="modal" class="btn btn-info" style="padding: 0.3rem 0.5rem;;margin-right:1.5rem;"><i class="la la-eye"></i></button></a>
                                             @if((Auth::user()->role)==1)
                                                 <a href="{{ route('delete.staff', $staff['id']) }}" onclick="return confirm('Are you sure?')"><button class="btn btn-danger" style="padding: 0.3rem 0.5rem;"><i class="la la-trash"></i></button></a>
                                             @endif
