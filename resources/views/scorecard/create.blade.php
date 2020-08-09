@@ -31,10 +31,10 @@
                             <label class="input-group-text" for="inputGroupSelect01">Name</label>
                         </div>
                         @if((Auth::user()->role)==2)
-                        <select class="custom-select" required name="officer_name" id="inputGroupSelect01">
+                        <select class="custom-select" required name="staff" id="inputGroupSelect01">
                             <option value="">Choose...</option>
                             @for ($i = 0; $i < sizeof($staff); $i++)
-                                <option value="{{ $staff[$i]['name'] }}">{{ $staff[$i]['name'] }}</option>
+                                <option value="{{ $staff[$i]['id'] }}">{{ $staff[$i]['name'] }}</option>
                             @endfor
                         </select>
                         @elseif((Auth::user()->role)==1)
@@ -144,7 +144,6 @@
                         </table>
                         <div class="row">
                             <div class="col-md-5" style="margin-top: 10px;">
-                                
                             </div>
             
                             <div class="col-md-7" style="text-align: right; margin-bottom: 5px;">

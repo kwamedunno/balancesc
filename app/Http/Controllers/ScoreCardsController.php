@@ -9,12 +9,14 @@ use App\Metric;
 use App\Measure;
 use App\Objective;
 use App\ScoreCard;
-use App\ScoreCardMetric;
+use App\Mail\SendMail;
 
+use App\ScoreCardMetric;
 use App\ScoreCardMeasure;
 use App\ScoreCardObjective;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ScoreCardsController extends Controller
 {
@@ -80,7 +82,7 @@ class ScoreCardsController extends Controller
         $scorecard['total_score'] = 0;
         $scorecard['target_weight'] = 0;
         $entire_staff = Staff::with('role','department')->get()->toArray();
-
+        
         for ($i=0; $i < (sizeof($metrics)) ; $i++) { 
             $scorecard['total_score'] += ($metrics[$i]['score'] * $metrics[$i]['weight']) / $metrics[$i]['target']; //score
         }
@@ -198,8 +200,26 @@ class ScoreCardsController extends Controller
                 }
             }
         }
-        return redirect()->back()
-                ->with('success', 'Score Card Created');
+        
+        $mailstaff= Staff::where('name','=',$request->staff)->first() ;
+        $mailscorecard = ScoreCard::where('period','=',$request->month."-".$request->year)->where('staff','=',$mailstaff->id)->first();
+
+        $this->validate($request, [
+            'staff'      =>  'required',
+            'month'     =>  'required',
+            'year'   =>  'required'
+        ]);
+        
+        $data_createcard = array(
+            'staff'      =>  $request->staff,
+            'month'     =>  $request->month,
+            'year'   =>  $request->year,
+            'scorecard' => $mailscorecard
+        );
+
+        Mail::to($mailstaff->email)->send(new SendMail($data_createcard));
+        
+        return back()->with('success', 'Score Card Created and mail sent');
     }
 
     //viewing the create scorecard page
