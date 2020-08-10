@@ -44,7 +44,7 @@ class LoginController extends Controller
             $user = Socialite::driver('google')->user();
             $finduser = Staff::where('email', $user->email)->first();
             if ($finduser) {
-                Auth::guard('staff')->login($finduser);
+                Auth::guard('staff')->login($finduser); 
                 return redirect()->route('show.profile',Auth::user()->id);
             } else {
                 $newUser = Staff::create(['name' => $user->name, 'email' => $user->email, 'google_id' => $user->id]);
