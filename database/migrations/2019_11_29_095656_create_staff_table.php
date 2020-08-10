@@ -20,6 +20,7 @@ class CreateStaffTable extends Migration
             $table->String('department');
             $table->String('role');
             $table->string('password');
+            $table->string('google_id')->nullable();
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent(); 
             $table->timestamp('updated_at')->useCurrent();

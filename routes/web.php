@@ -11,9 +11,16 @@
 |
 */
 
-
+Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
 Route::get('/', 'Auth\LoginController@showLogin')->name('show.login');
 Route::post('/', 'Auth\LoginController@login')->name('process.login');
+
+//Google test routes
+Route::get('/login2', 'Auth\LoginController@showLogin2')->name('show.login2');
+
+
+
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/changepassword','Auth\ResetPasswordController@showResetPassword')->name('reset.password');
 Route::post('/changepassword','Auth\ResetPasswordController@updatePassword')->name('password.update');
@@ -35,6 +42,7 @@ Route::post('/staff','StaffController@addStaff')->name('add.staff');
 Route::get('/staff/delete/{id}','StaffController@deleteStaff')->name('delete.staff');
 Route::post('/staff/edit','StaffController@editStaff')->name('edit.staff');
 Route::get('/staff/profile/{id}','StaffController@showProfile')->name('show.profile');
+Route::get('/staff/loggedprofile','StaffController@showLoggedUserProfile')->name('show.logged.profile');
 
 
 

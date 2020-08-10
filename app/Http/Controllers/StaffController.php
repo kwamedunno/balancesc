@@ -57,7 +57,26 @@ class StaffController extends Controller
     }
 
     public function showProfile($id){
-            $staff = Staff::where('id','=', $id)->with('scorecard')->get()->first();
+            $staff = Staff::where('id','=', $id)->get()->first();
+            $averagescore=0;
+            $staff['averagescore'] = 0;
+            $scorecards = ScoreCard::where('staff','=',$staff['id'])->get()->toArray();
+
+            if (sizeof($scorecards)>0){
+                for ($j=0; $j < sizeof($scorecards); $j++) {
+                    $averagescore += ($scorecards[$j]['total_score']);
+                }
+            $staff['averagescore'] = $averagescore/sizeof($scorecards);
+            }
+            
+            
+            return view('staff/profile')
+                ->with('staff', $staff)
+                ->with('scorecards',$scorecards);
+        }
+
+        public function showLoggedUserProfile(){
+            $staff = Staff::where('id','=', Auth::user()->id)->get()->first();
             $averagescore=0;
             $staff['averagescore'] = 0;
             $scorecards = ScoreCard::where('staff','=',$staff['id'])->get()->toArray();

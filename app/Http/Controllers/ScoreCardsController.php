@@ -201,24 +201,8 @@ class ScoreCardsController extends Controller
             }
         }
         
-        $mailstaff= Staff::where('name','=',$request->staff)->first() ;
-        $mailscorecard = ScoreCard::where('period','=',$request->month."-".$request->year)->where('staff','=',$mailstaff->id)->first();
-
-        $this->validate($request, [
-            'staff'      =>  'required',
-            'month'     =>  'required',
-            'year'   =>  'required'
-        ]);
-        
-        $data_createcard = array(
-            'staff'      =>  $request->staff,
-            'month'     =>  $request->month,
-            'year'   =>  $request->year,
-            'scorecard' => $mailscorecard
-        );
-
-        Mail::to($mailstaff->email)->send(new SendMail($data_createcard));
-        
+        $m = new SendMailController;
+        $m->sendmail($request);
         return back()->with('success', 'Score Card Created and mail sent');
     }
 
