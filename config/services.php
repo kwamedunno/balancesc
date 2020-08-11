@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '625536232447-ipvj6g8fsju5rccitq8eotgcr9qtgndj.apps.googleusercontent.com',
         'client_secret' => 'l4ZLXAMPPfcG7o7yYrI7HutC',
-        'redirect' => 'https://scorecard.instntmny.com/staff/loggedprofile',
+        'redirect' => 'https://scorecard.instntmny.com/auth/google/callback',
     ],
 
 
