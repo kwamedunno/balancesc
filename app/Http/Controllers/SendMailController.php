@@ -12,30 +12,49 @@ class SendMailController extends Controller
 {
     //
 
-    function index(){
-
-        return view('/contact-us');
-
-    }
-
-    function sendmail(Request $request){
+    
+    //Create ScoreCard Mail
+    function createCardMail(Request $request){
         
         $mailstaff = Staff::where('id','=',$request->staff)->first();
         $mailscorecard = ScoreCard::where('period','=',$request->month."-".$request->year)->where('staff','=',$mailstaff->id)->first();
         
 
         $this->validate($request, [
-            'staff'      =>  'required',
+            'staff'     =>  'required',
             'month'     =>  'required',
-            'year'   =>  'required'
+            'year'      =>  'required'
         ]);
         
         $data_createcard = array(
-            'staff'      =>  $request->staff,
+            'staff'     =>  $request->staff,
             'month'     =>  $request->month,
-            'year'   =>  $request->year,
+            'year'      =>  $request->year,
             'scorecard' => $mailscorecard,
             'staffname' => $mailstaff['name']
+        );
+
+        Mail::to($mailstaff->email)->send(new SendMail($data_createcard));
+    }
+
+    //Save ScoreCard Mail
+    function saveCardMail(Request $request){
+
+        $mailstaff = Staff::where('id','=',$request->staff)->first();
+        $mailscorecard = ScoreCard::where('period','=',$request->month."-".$request->year)->where('staff','=',$mailstaff->id)->first();
+
+        $this->validate($request, [
+            'staff'     =>  'required',
+            'month'     =>  'required',
+            'year'      =>  'required'
+        ]);
+
+        $data_createcard = array(
+            'staff'     =>  $request->staff,
+            'month'     =>  $request->month,
+            'year'      =>  $request->year,
+            'scorecard' =>  $mailscorecard,
+            'staffname' =>  $mailstaff['name']
         );
 
         Mail::to($mailstaff->email)->send(new SendMail($data_createcard));

@@ -19,16 +19,13 @@ class ScoreCardsTableSeeder extends Seeder
             'period'=>'01-2020',
             'total_score'=> '66',
             'last_updated_by'=>'2'
-
         ],
         [
-
             'id'=> '2',
             'staff'=>'3',
             'period'=>'01-2020',
             'total_score'=>'60',
             'last_updated_by'=>'3'
-
         ]
 
         ]);

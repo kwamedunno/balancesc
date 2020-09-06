@@ -18,6 +18,7 @@ class CreateScoreCardsTable extends Migration
             $table->String('staff');
             $table->String('period');
             $table->Integer('total_score')->nullable();
+            $table->String('approval')->nullable();
             $table->String('last_updated_by');
             $table->timestamp('created_at')->useCurrent(); 
             $table->timestamp('updated_at')->useCurrent();

@@ -11,12 +11,6 @@
                         <h4 class="card-title">View <b>{{ $scorecard['staff']['name'] }}</b>'s Score Card for <b>{{  $scorecard['period'] }}</b></h4>
                     </div>
             </div>
-            <div class="row">
-                <div class="col-md-12" style="text-align: right; margin-bottom: 5px;">
-                    {{-- <span>Comments: </span><input type="text" style="width:80%"> --}}
-                    <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
-                </div>
-            </div>
             @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible mb-2" style="color: #fff !important;" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -65,8 +59,9 @@
                                                             <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['actual']['description'] }}</td>
                                                             
                                                             @for($l=0; $l<sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']); $l++ ) 
+
                                                                 <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['actual']['description'] }}</td>
-                                                                <td><input style="height: 20px; min-width: 100px;" class="form-control" name = "metric_{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['id'] }}" value="{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['score'] }}" type="text" required></td>
+                                                                <td><input style="height: 20px; min-width: 100px;" class="form-control" name = "metric_{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['id'] }}" @if(($scorecard['approval']=='yes')&&(Auth::user()->role>2)) {{'readonly'}} @endif value="{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['score'] }}" type="text" required></td>
 
                                                                     <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['target'] }}</td>
                                                                     <td>{{ $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['weight'] }}</td>
@@ -94,21 +89,32 @@
                                         </tr>
 
                                     @endfor
+                                    
                                         <tr style="background-color:#343a40; color:#fff !important;">
                                             <td colspan="7" style="text-align: right; font-weight: 800"><h5 style="color:#fff;">Total Score:<b> {{ round($scorecard['total_score'], 2) }} %</b></h5></td>
-                                        </tr>
-                                        {{-- <tr>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td><td><textarea style="border:1px solid black; border-radius:5px;" name="" id="" cols="30" rows="5"></textarea></td>
-                                        </tr> --}}
-                               
+                                        </tr> 
                             </tbody>
                             <tfoot>
                             </tfoot>
                         </table>
                         <div class="row">
-                            <div class="col-md-12" style="text-align: right; margin-bottom: 5px;">
-                                {{-- <span>Comments: </span><input type="text" style="width:80%"> --}}
-                                <button class="btn btn-success" type ="submit"> Save <i class="la la-disc"></i></button>
+                            <div class="d-flex form-group col-md-12" style=" margin-bottom: 5px; text-align:left;">
+                                <div class="col-md-8">
+                                    <span>Comments: <input type="textarea" style="width:80%"><br><br></span>
+                                    <fieldset class="">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"  
+                                            @if((Auth::user()->role)>2) {{'disabled'}}@endif
+                                            @if($scorecard['approval']=='yes') {{'checked'}}@endif 
+                                            name="approval" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Approved and Complete</label><br><br>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12 justify-content-right">
+                                    <button class="btn btn-warning" @if(($scorecard['approval']=='yes')&&((Auth::user()->role)>2)) {{'disabled'}}@endif type ="save"> Save <i class="la la-disc"></i></button>
+                                    <button class="btn btn-success" @if(($scorecard['approval']=='yes')&&((Auth::user()->role)>2)) {{'disabled'}}@endif type ="submit"> Submit <i class="la la-disc"></i></button><br><br>
                             </div>
                         </div>
                     </form>

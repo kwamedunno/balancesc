@@ -8837,7 +8837,6 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .custom-control {
-  display : block;
   min-height : 1.45rem;
   padding-left : 2.565rem;
   position : relative;

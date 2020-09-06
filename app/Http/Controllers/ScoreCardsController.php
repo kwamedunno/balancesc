@@ -20,11 +20,13 @@ use Illuminate\Support\Facades\Mail;
 
 class ScoreCardsController extends Controller
 {
+    
     public function __construct()
     {
         $this->middleware('auth:staff');
     }
 
+    //Display List of Scorecards
     public function showScoreCards(){
 
         try {
@@ -65,13 +67,6 @@ class ScoreCardsController extends Controller
         
 
     }                 
-    
-    
-    // public function showCreateScoreCard(){
-    //     return view('scorecard.add')
-    //         ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray());
-    // }
-
 
     public function showViewScoreCard($id){
 
@@ -101,7 +96,7 @@ class ScoreCardsController extends Controller
         
         
     }
-    
+
     //Saving Scorecard input from the user
     public function saveScoreCard(Request $request){
         $id = ScoreCardMetric::where('scorecard','=',$request->input('scorecard_id'))->get('id')->toArray();
@@ -112,6 +107,12 @@ class ScoreCardsController extends Controller
         $sc = ScoreCard::find($request->scorecard_id);
         $sc->last_updated_by = Auth::user()->id;
         $sc->updated_at = date("Y-m-d H:i:s"); 
+        if($request->has('approval')){
+            $sc->approval = "yes";
+        }
+        else{
+            $sc->approval = "no";
+        }
         $sc->save();
         return redirect()->back()
                 ->with('success', 'Score Card Saved');
@@ -150,6 +151,7 @@ class ScoreCardsController extends Controller
         $scorecard = New ScoreCard;
         $scorecard->staff = $request->staff;
         $scorecard->period = $request->month."-".$request->year;
+        $scorecard->approval = "no";
         $scorecard->last_updated_by = Auth::user()->id;
         $scorecard->save();
 
@@ -200,9 +202,9 @@ class ScoreCardsController extends Controller
                 }
             }
         }
-        
-        $m = new SendMailController;
-        $m->sendmail($request);
+
+        $createdMail = new SendMailController;
+        $createdMail->createCardMail($request);
         return back()->with('success', 'Score Card Created and mail sent');
     }
 
@@ -217,6 +219,7 @@ class ScoreCardsController extends Controller
             ->with('entire_staff',$entire_staff);
     }
 
+    //Deleting scorecard
     public function deleteScoreCard($id){
         $scorecard = ScoreCard::where('id','=', $id)->first();
         $scorecard->delete();
@@ -226,8 +229,5 @@ class ScoreCardsController extends Controller
 
         
     }
-
-
-
-    
+  
 }

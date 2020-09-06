@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
+    
     public function __construct()
     {
         $this->middleware('auth:staff');
@@ -94,7 +95,8 @@ class StaffController extends Controller
                 ->with('scorecards',$scorecards);
         }
 
-    public function addStaff(Request $request){
+    
+        public function addStaff(Request $request){
         /* Add Staff */
 
         $staff = new Staff;
@@ -137,6 +139,28 @@ class StaffController extends Controller
         return redirect()->back()
         ->with('upated','Staff has been updated');
     }
-    
 
+    public function restoreFelicity(){
+        $staff = new Staff;
+        $staff->id = 6;
+        $staff->name = "Samuel Lee Ninson";
+        $staff->email = "sl@myzeepay.com";
+        $staff->department = 8;
+        $staff->role = 2;
+        $staff->google_id = 0;
+        $staff->password = Hash::make('password');
+        $staff->save(); 
+    }
+    public function restoreCards(){
+        $cards = new ScoreCard;
+        $cards2 = new ScoreCard;
+        $cards3 = new ScoreCard;
+        $cards->id = 14;
+        $cards->staff = 6;
+        $cards->period = "01-2020";
+        $cards->total_score= 4;
+        $cards->approval = null;
+        $cards->save();
+    }
+    
 }
