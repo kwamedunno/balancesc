@@ -100,7 +100,7 @@
                         <div class="row">
                             <div class="d-flex form-group col-md-12" style=" margin-bottom: 5px; text-align:left;">
                                 <div class="col-md-8">
-                                    <span>Comments: <input type="textarea" style="width:80%"><br><br></span>
+                                    <span>Comments: <input type="textarea" name="comments" style="width:80%"><br><br></span>
                                     <fieldset class="">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input"  

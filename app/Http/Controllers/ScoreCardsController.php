@@ -114,6 +114,28 @@ class ScoreCardsController extends Controller
             $sc->approval = "no";
         }
         $sc->save();
+
+        
+        $request->scorecard_id;
+        if($request->scorecard_id)
+        {
+            $staffMail = Staff::where('id', ScoreCard::where('id',$request->scorecard_id)->first()->staff)->first()->email;
+            if($sc->approval == "no" || $sc->approval == "")
+            {
+                $body = "<h3>Hi from BSC</h3><br><p>Your scorecard for ". $sc->period ." has been updated. Please login here to access it >> <a href='https://scorecard.instntmny.com'>Balanced Scorecard</a></p><p>Comments:". $request->comments ."from". Auth::user()->name ."</p>";
+            }
+            elseif($sc->approval == "yes")
+            {
+                $body = "<h1>Hi from BSC</h1><br><p>Your scorecard for ". $sc->period ." has been approved and cannot be updated anymore. Please login here to view your final form >> <a href='https://scorecard.instntmny.com'>Balanced Scorecard</a></p><p>Comments:". $request->comments ." from " . Auth::user()->name ."</p>";
+            }
+        }
+        
+        $mailStructure = array(
+            "body"      => $body
+        );
+
+        Mail::to($staffMail)->send(new SendMail($mailStructure));
+
         return redirect()->back()
                 ->with('success', 'Score Card Saved');
     }
@@ -215,6 +237,9 @@ class ScoreCardsController extends Controller
         
         return view('scorecard.create')
             ->with('objectives', Objective::where('parent', null)->with('objectives.measures.metrics')->get()->toArray())
+            ->with('sub_objectives',Objective::whereNotNull('parent')->with('measures.metrics')->get()->toArray())
+            ->with('measures',Measure::all()->toArray())
+            ->with('metrics',Metric::all()->toArray())
             ->with('staff',$staff)
             ->with('entire_staff',$entire_staff);
     }
@@ -229,5 +254,46 @@ class ScoreCardsController extends Controller
 
         
     }
-  
+
+    //Add Metric to score 
+    public function createMeasure(Request $request){
+
+        $objective = Objective::where('id','=',$request->objective)->first();
+        $sub_objective = Objective::where('id','=',$request->sub_objective)->first();
+        $measure = Measure::where('id','=',$request->measure)->first();
+
+        if($request->measure){
+            $new_measure  = new Measure;
+            $new_measure->objective = $request->sub_objective;
+            $new_measure->description = $request->measure;
+            $new_measure ->save();
+            if($request->metric){
+                $new_metric  = new Metric;
+                $new_metric->description = $request->metric;
+                $new_metric->measure = $new_measure->id;
+                $new_metric->save();
+            }
+            else{return "";}
+        }
+        else{return null;}
+        
+
+        return redirect()->back()
+        ->with('success','You have successfully added a new Meaure and Metric');
+
+
+    }
+
+    public function createObjective(Request $request){
+        $objective = Objective::where('id','=',$request->objective)->first();
+        $sub_objective = new Objective;
+        $sub_objective->parent = $objective->id;
+        $sub_objective->description = $request->sub_objective;
+
+        $sub_objective->save();
+        return redirect()->back()
+        ->with('success','You have successfully added a new Objective');
+
+    }
+
 }

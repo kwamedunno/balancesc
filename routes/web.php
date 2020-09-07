@@ -29,6 +29,8 @@ Route::post('/scorecards/view/{id}','ScoreCardsController@saveScoreCard')->name(
 Route::get('/scorecards/createsc','ScoreCardsController@createScoreCard')->name('create.scorecard');
 Route::post('/scorecards/save','ScoreCardsController@saveCreatedScoreCard')->name('save.create.scorecard');
 Route::get('/scorecards/delete/{id}','ScoreCardsController@deleteScoreCard')->name('delete.scorecard');
+Route::post('/scorecards/createobjective','ScoreCardsController@createObjective')->name('create.objective');
+Route::post('/scorecards/createrate','ScoreCardsController@createMeasure')->name('create.measure');
 
 //Departments
 Route::get('/departments','DepartmentController@showDepartment')->name('show.departments');
@@ -42,7 +44,7 @@ Route::post('/staff/edit','StaffController@editStaff')->name('edit.staff');
 Route::get('/staff/profile/{id}','StaffController@showProfile')->name('show.profile');
 Route::get('/staff/loggedprofile','StaffController@showLoggedUserProfile')->name('show.logged.profile');
 
-Route::get('/staff/restore','StaffController@restoreCards')->name('restore.felicity');
+Route::get('/staff/restore','StaffController@restoreStaff')->name('restore.staff');
 
 
 

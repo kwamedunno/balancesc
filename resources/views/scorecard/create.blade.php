@@ -13,6 +13,8 @@
                 </div>
 
                 <div class="col-md-7" style="text-align: right; margin-bottom: 5px;">
+                    <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#addObjective">Create <b>Objective</b> <i class="la la-disc"></i></button>
+                    <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#addMeasure">Create <b>Measure</b><i class="la la-disc"></i></button>
                     <button type="submit" class="btn btn-success" >Save <i class="la la-disc"></i></button>
                 </div>
             </div>
@@ -22,6 +24,14 @@
                         <span aria-hidden="true">×</span>
                     </button>
                     {{ session()->get('success') }}
+                </div>
+            @endif
+            @if(session()->has('rate_success'))
+                <div class="alert alert-success alert-dismissible mb-2" style="color: #fff !important;" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    {{ session()->get('rate_success') }}
                 </div>
             @endif
             <div class="" style="">
@@ -154,6 +164,103 @@
             </div>
         </div>
     </div>
+    <!--Objective Modal-->
+    <div class="modal fade text-left" id="addObjective" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel1">Add Objective</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('create.objective')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="objective">Parent Objective</label>
+                                    <select  class="form-control" name="objective" required id="">
+                                        <option value=''>Choose Parent</option>
+                                        @for ($i = 0; $i < sizeof($objectives); $i++)
+                                        <option value='{{ $objectives[$i]['id'] }}'>{{ $objectives[$i]['description'] }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="sub_objective">Objective</label>
+                                    <input id="sub_objective" name="sub_objective" class="form-control" required placeholder="Enter Objective " type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn danger btn-outline-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn success btn-outline-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End of Objective Modal -->
+
+     <!--Measure Modal-->
+     <div class="modal fade text-left" id="addMeasure" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel1">Add Metric</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('create.measure') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="sub_objective">Objective</label>
+                                    <select  class="form-control" name="sub_objective" id="">
+                                        <option value=''>Choose Objective</option>
+                                        @for ($i = 0; $i < sizeof($sub_objectives); $i++)
+                                        <option value='{{ $sub_objectives[$i]['id'] }}'>{{ $sub_objectives[$i]['description'] }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="measure">Measure</label>
+                                    <input id="measure" name="measure" class="form-control" required placeholder="Enter Measure " type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="metric">Metric</label>
+                                    <input id="metric" name="metric" class="form-control" required placeholder="Enter Metric " type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn danger btn-outline-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn success btn-outline-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End of Metric Modal -->
 
 
 @endsection

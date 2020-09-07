@@ -40,7 +40,6 @@
                 {{ session()->get('updated') }}
             </div>
             @endif
-            <div><a href={{ route('restore.felicity')}}><button type="button" class="btn danger btn-outline-danger">Restore</button></a></div>
             <div class="card" style="">
                 <div class="card-content collapse show">
                     <div class="card-body">
@@ -220,5 +219,6 @@
             </div>
         </div>
     </div>
+    {{-- End of Modal --}}
 
 @endsection

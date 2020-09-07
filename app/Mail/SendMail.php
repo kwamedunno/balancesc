@@ -18,10 +18,10 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct($data_createcard)
+    public function __construct($mailStructure)
     {
         //
-        $this->data_createcard = $data_createcard;
+        $this->mailStructure = $mailStructure;
     }
 
     /**
@@ -31,7 +31,7 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Balanced Score Card')->view('emails.create_scorecard_email')->with('data_createcard',$this->data_createcard);
+        return $this->subject('Balanced Score Card')->view('emails.create_scorecard_email')->with('mailStructure',$this->mailStructure);
     }
 
 }

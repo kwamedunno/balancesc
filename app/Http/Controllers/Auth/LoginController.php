@@ -22,7 +22,7 @@ class LoginController extends Controller
     }
 
     public function showLogin2(){
-        return view('login2');
+        return view('auth.login2');
     }
 
     public function login(Request $request){
