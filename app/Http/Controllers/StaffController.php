@@ -156,7 +156,7 @@ class StaffController extends Controller
         ->with('upated','Staff has been updated');
     }
 
-    public function restoreFelicity(){
+    public function restoreStaff(){
         $staff = new Staff;
         $staff->id = 2;
         $staff->name = "Felicity Jaforktuk";
