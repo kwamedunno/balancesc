@@ -8,8 +8,11 @@ use App\Staff;
 use App\ScoreCard;
 
 use App\Department;
+use App\Mail\SendMail;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class StaffController extends Controller
 {
@@ -74,29 +77,29 @@ class StaffController extends Controller
             return view('staff/profile')
                 ->with('staff', $staff)
                 ->with('scorecards',$scorecards);
-        }
+    }
 
-        public function showLoggedUserProfile(){
-            $staff = Staff::where('id','=', Auth::user()->id)->get()->first();
-            $averagescore=0;
-            $staff['averagescore'] = 0;
-            $scorecards = ScoreCard::where('staff','=',$staff['id'])->get()->toArray();
+    public function showLoggedUserProfile(){
+        $staff = Staff::where('id','=', Auth::user()->id)->get()->first();
+        $averagescore=0;
+        $staff['averagescore'] = 0;
+        $scorecards = ScoreCard::where('staff','=',$staff['id'])->get()->toArray();
 
-            if (sizeof($scorecards)>0){
-                for ($j=0; $j < sizeof($scorecards); $j++) {
-                    $averagescore += ($scorecards[$j]['total_score']);
-                }
-            $staff['averagescore'] = $averagescore/sizeof($scorecards);
+        if (sizeof($scorecards)>0){
+            for ($j=0; $j < sizeof($scorecards); $j++) {
+                $averagescore += ($scorecards[$j]['total_score']);
             }
-            
-            
-            return view('staff/profile')
-                ->with('staff', $staff)
-                ->with('scorecards',$scorecards);
+        $staff['averagescore'] = $averagescore/sizeof($scorecards);
         }
+        
+        
+        return view('staff/profile')
+            ->with('staff', $staff)
+            ->with('scorecards',$scorecards);
+    }
 
     
-        public function addStaff(Request $request){
+    public function addStaff(Request $request){
         /* Add Staff */
 
         $staff = new Staff;
@@ -104,11 +107,24 @@ class StaffController extends Controller
         $staff->email = $request->email;
         $staff->role = $request->role;
         $staff->department = $request->department;
+        $staff->google_id = 1;
 
-        // $password = rand(1000, 9999);
         $staff->password = Hash::make($request->password);
-
         $staff->save();
+
+        if($request->name)
+        {
+            
+            $body = "<h3>Hi from BSC</h3><br><p>Your account  has been created. Please login here to access it >> <a href='https://scorecard.instntmny.com'>Balanced Scorecard</a></p>";
+            
+        }
+        
+        $mailStructure = array(
+            "body"      => $body
+        );
+
+        Mail::to($staff->email)->send(new SendMail($mailStructure));
+
         
         return redirect()->route('show.staff')
             ->with('success', 'Staff inserted successfully.');
