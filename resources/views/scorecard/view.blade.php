@@ -41,7 +41,13 @@
                                     <input type="hidden" name="scorecard_id" value="{{ $scorecard['id'] }}">
                                     @for($i=0; $i<sizeof($objectives); $i++) 
                                         <tr style="background-color:#343a40; color:#fff !important;">
-                                            <td colspan="7"><h4 style="color:#fff !important;">{{ $i+1 }}.&nbsp;{{ $objectives[$i]['actual']['description'] }}</h4></td>
+                                            <td><h4 style="color:#fff !important;">{{ $i+1 }}.&nbsp;{{ $objectives[$i]['actual']['description'] }}</h4></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Target</td>
+                                            <td>Weight</td>
+                                            <td>Rating</td>
                                             
                                             @for($j=0; $j<sizeof($objectives[$i]['objectives']); $j++) 
                                                 <tr >

@@ -284,6 +284,7 @@ class ScoreCardsController extends Controller
 
     }
 
+    //Add Objective to score
     public function createObjective(Request $request){
         $objective = Objective::where('id','=',$request->objective)->first();
         $sub_objective = new Objective;
