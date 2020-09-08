@@ -157,16 +157,6 @@ class StaffController extends Controller
     }
 
     public function restoreStaff(){
-        $staff = new Staff;
-        $staff->id = 2;
-        $staff->name = "Felicity Jaforktuk";
-        $staff->email = "fj@myzeepay.com";
-        $staff->department = 2;
-        $staff->role = 2;
-        $staff->google_id = 0;
-        $staff->password = Hash::make('password');
-        $staff->save(); 
-
         $cards = new ScoreCard;
         $cards->id = 1;
         $cards->staff = 2;
