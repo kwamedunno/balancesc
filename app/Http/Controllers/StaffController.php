@@ -206,6 +206,7 @@ class StaffController extends Controller
         $cards5->last_updated_by = 1;
 
         // $cards->save();
+        $cards->save();
         $cards1->save();
         $cards2->save();
         $cards3->save();
