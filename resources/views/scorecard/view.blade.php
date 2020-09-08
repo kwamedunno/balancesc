@@ -44,7 +44,7 @@
                                             <td><h4 style="color:#fff !important;">{{ $i+1 }}.&nbsp;{{ $objectives[$i]['actual']['description'] }}</h4></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
+                                            <td>Actual</td>
                                             <td>Target</td>
                                             <td>Weight</td>
                                             <td>Rating</td>
