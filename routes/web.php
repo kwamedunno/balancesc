@@ -31,6 +31,8 @@ Route::post('/scorecards/save','ScoreCardsController@saveCreatedScoreCard')->nam
 Route::get('/scorecards/delete/{id}','ScoreCardsController@deleteScoreCard')->name('delete.scorecard');
 Route::post('/scorecards/createobjective','ScoreCardsController@createObjective')->name('create.objective');
 Route::post('/scorecards/createrate','ScoreCardsController@createMeasure')->name('create.measure');
+Route::post('/scorecards/editcard','ScoreCardsController@editScoreCard')->name('edit.scorecard');
+
 
 //Departments
 Route::get('/departments','DepartmentController@showDepartment')->name('show.departments');

@@ -66,7 +66,7 @@ class ScoreCardsController extends Controller
         }
         
 
-    }                 
+    }  
 
     public function showViewScoreCard($id){
 
@@ -176,7 +176,6 @@ class ScoreCardsController extends Controller
         $scorecard->approval = "no";
         $scorecard->last_updated_by = Auth::user()->id;
         $scorecard->save();
-
         
 
         for ($i=0; $i < sizeof($parent_objectives_id); $i++) { 
@@ -225,8 +224,19 @@ class ScoreCardsController extends Controller
             }
         }
 
-        $createdMail = new SendMailController;
-        $createdMail->createCardMail($request);
+        if($scorecard->staff)
+        {
+            $staffMail = Staff::where('id','=',$scorecard->staff)->first()->email;
+            
+            $body = "<h3>Hi from BSC</h3><br><p>Your scorecard for ". $scorecard->period ." has been created. Please login here to access it >> <a href='https://scorecard.instntmny.com'>Balanced Scorecard</a></p>";
+            
+        }
+        
+        $mailStructure = array(
+            "body"      => $body
+        );
+
+        Mail::to($staffMail)->send(new SendMail($mailStructure));
         return back()->with('success', 'Score Card Created and mail sent');
     }
 

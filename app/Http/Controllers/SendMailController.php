@@ -52,7 +52,6 @@ class SendMailController extends Controller
             'year'      =>  'required'
         ]);
 
-        $body = "<h1>Welcome to BSC</h1><br><p>I'm a fucking legend. . . A fuckin' legend</p>";
 
         $mailStructure = array(
             'staff'     =>  $request->staff,
