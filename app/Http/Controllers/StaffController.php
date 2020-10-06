@@ -156,62 +156,91 @@ class StaffController extends Controller
         ->with('upated','Staff has been updated');
     }
 
+    
     public function restoreStaff(){
+        $staff = new Staff;
+        $staff->id = 11;
+        $staff->name = "Samuel Kwadwo Tuffour";
+        $staff->department = "8";
+        $staff->role = "3";
+        $staff->email = "skt@myzeepay.com";
+        $staff->google_id = "1";
+        $staff->password= hash::make('password');
+
+
         $cards = new ScoreCard;
-        $cards->id = 1;
-        $cards->staff = 2;
+        $cards->id = 11;
+        $cards->staff = 11;
         $cards->period = "01-2020";
-        $cards->total_score= 4;
+        $cards->total_score= 16;
         $cards->approval = "no";
         $cards->last_updated_by = 1;
 
         $cards1 = new ScoreCard;
-        $cards1->id = 39;
-        $cards1->staff = 2;
-        $cards1->period = "02-2020";
+        $cards1->id = 100;
+        $cards1->staff = 11;
+        $cards1->period = "07-2020";
         $cards1->total_score= 0;
         $cards1->approval = "no";
         $cards1->last_updated_by = 1;
 
         $cards2 = new ScoreCard;
-        $cards2->id = 78;
-        $cards2->staff = 2;
-        $cards2->period = "03-2020";
+        $cards2->id = 101;
+        $cards2->staff = 11;
+        $cards2->period = "08-2020";
         $cards2->total_score= 0;
         $cards2->approval = "no";
         $cards2->last_updated_by = 1;
         
         $cards3 = new ScoreCard;
-        $cards3->id = 79;
-        $cards3->staff = 2;
-        $cards3->period = "04-2020";
+        $cards3->id = 44;
+        $cards3->staff = 11;
+        $cards3->period = "02-2020";
         $cards3->total_score= 0;
         $cards3->approval = "no";
         $cards3->last_updated_by = 1;
 
         $cards4 = new ScoreCard;
-        $cards4->id = 80;
-        $cards4->staff = 2;
-        $cards4->period = "05-2020";
+        $cards4->id = 47;
+        $cards4->staff = 11;
+        $cards4->period = "03-2020";
         $cards4->total_score= 0;
         $cards4->approval = "no";
         $cards4->last_updated_by = 1;
 
         $cards5 = new ScoreCard;
-        $cards5->id = 81;
-        $cards5->staff = 2;
-        $cards5->period = "06-2020";
+        $cards5->id = 70;
+        $cards5->staff = 11;
+        $cards5->period = "05-2020";
         $cards5->total_score= 0;
         $cards5->approval = "no";
         $cards5->last_updated_by = 1;
 
-        // $cards->save();
+        $cards6 = new ScoreCard;
+        $cards6->id = 71;
+        $cards6->staff = 11;
+        $cards6->period = "06-2020";
+        $cards6->total_score= 0;
+        $cards6->approval = "no";
+        $cards6->last_updated_by = 1;
+
+        $cards7 = new ScoreCard;
+        $cards7->id = 59;
+        $cards7->staff = 11;
+        $cards7->period = "04-2020";
+        $cards7->total_score= 0;
+        $cards7->approval = "no";
+        $cards7->last_updated_by = 1;
+
+        $staff->save();
         $cards->save();
         $cards1->save();
         $cards2->save();
         $cards3->save();
         $cards4->save();
         $cards5->save();
+        $cards6->save();
+        $cards7->save();
     }
     
 }

@@ -265,7 +265,20 @@ class ScoreCardsController extends Controller
         
     }
 
-    //Add Metric to score 
+    //Add Objective to score
+    public function createObjective(Request $request){
+        $objective = Objective::where('id','=',$request->objective)->first();
+        $sub_objective = new Objective;
+        $sub_objective->parent = $objective->id;
+        $sub_objective->description = $request->sub_objective;
+
+        $sub_objective->save();
+        return redirect()->back()
+        ->with('success','You have successfully added a new Objective');
+
+    }
+
+    //Add Measure & Metric to score 
     public function createMeasure(Request $request){
 
         $objective = Objective::where('id','=',$request->objective)->first();
@@ -294,17 +307,25 @@ class ScoreCardsController extends Controller
 
     }
 
-    //Add Objective to score
-    public function createObjective(Request $request){
-        $objective = Objective::where('id','=',$request->objective)->first();
-        $sub_objective = new Objective;
-        $sub_objective->parent = $objective->id;
-        $sub_objective->description = $request->sub_objective;
+        //Add Only Metric to score 
+    public function createMetric(Request $request){
 
-        $sub_objective->save();
+        $measure = Measure::where('id','=',$request->measure)->first();
+
+            if($request->metric){
+                $new_metric  = new Metric;
+                $new_metric->description = $request->metric;
+                $new_metric->measure = $request->measure;
+                $new_metric->save();
+            }
+            else{return "";}
+        
+
         return redirect()->back()
-        ->with('success','You have successfully added a new Objective');
+        ->with('success','You have successfully added a new Metric');
+
 
     }
+
 
 }
