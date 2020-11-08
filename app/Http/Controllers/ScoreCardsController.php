@@ -144,8 +144,8 @@ class ScoreCardsController extends Controller
     public function saveCreatedScoreCard(Request $request){
         $metrics = $measures_id = $objectives_id = $parent_objectives_id = [];
         $count=0;
+        $all_metrics = Metric::all()->toArray();
         for ($i=0; $i < count(Metric::get()) ; $i++) { 
-            $all_metrics = Metric::all()->toArray();
             if (!is_null($request->input('target_'.$all_metrics[$i]['id'])) && (!is_null($request->input('weight_'.$all_metrics[$i]['id'])))) {
                 
                 $metrics[$count]['id'] = ($request->input('metric_'.$all_metrics[$i]['id']));
@@ -157,12 +157,14 @@ class ScoreCardsController extends Controller
             }
         }
 
+
         $measures_id = (array_values(array_unique($measures_id)));
         for ($i=0; $i < (sizeof($measures_id)); $i++) { 
             $objectives_id[$i] = Measure::where('id', '=', $measures_id[$i])->first()->objective;
         }
 
         $objectives_id = array_values(array_unique(($objectives_id)));
+        // dd($objectives_id);
 
         for ($i=0; $i < (sizeof($objectives_id)); $i++) { 
             $parent_objectives_id[$i]= Objective::where('id', '=', $objectives_id[$i])->first()->parent;
@@ -178,6 +180,7 @@ class ScoreCardsController extends Controller
         $scorecard->save();
         
 
+        // dd($parent_objectives_id);
         for ($i=0; $i < sizeof($parent_objectives_id); $i++) { 
             $scorecardParentObjective = new ScoreCardObjective;
             $scorecardParentObjective->score_card = $scorecard->id;

@@ -138,11 +138,9 @@
 
                                                             @if ($l != sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']) - 1)
                                                                 <tr><td></td><td></td>
-                                                            @endif
-                                                            
+                                                            @endif           
                                                         @endfor
                                                         </tr>
-                                                        
                                                 @endfor
                                                 </tr>
                                             </tr>
