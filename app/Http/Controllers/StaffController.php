@@ -27,35 +27,81 @@ class StaffController extends Controller
             # show all
             $staff = Staff::with('role', 'department','scorecard')->get()->toArray();
             $departments = Department::get()->toArray();
+            for ($i=0; $i<sizeof($staff); $i++) {
+                $averagescore=0;
+                $staff[$i]['averagescore'] = 0;
+                $scorecards = ScoreCard::where('staff','=',$staff[$i]['id'])->get()->toArray();
+    
+                if (sizeof($scorecards)>0){
+                    for ($j=0; $j < sizeof($scorecards); $j++) {
+                        $averagescore += ($scorecards[$j]['total_score']);
+                    }
+                    $staff[$i]['averagescore'] = $averagescore/sizeof($scorecards);
+                }
+            }
+
         }elseif(Auth::user()->role == 2){
             # show only staff in that department
-            $staff = Staff::where('department', '=', Auth::user()->department)->where('role', '>', Auth::user()->role)->with('role', 'department','scorecard')->get()->toArray();
-            $departments = Department::where('id', '=', Auth::user()->department)->get()->toArray();
+
+            if(Auth::user()->department == 2){
+                $staff = Staff::where('department','=', 2)->orWhere('department', '=', 4)->where('role', '>', Auth::user()->role)->with('role', 'department','scorecard')->get()->toArray();
+                $departments = Department::where('id', '=', Auth::user()->department)->get()->toArray();
+                for ($i=0; $i<sizeof($staff); $i++) {
+                    $averagescore=0;
+                    $staff[$i]['averagescore'] = 0;
+                    $scorecards = ScoreCard::where('staff','=',$staff[$i]['id'])->get()->toArray();
+        
+                    if (sizeof($scorecards)>0){
+                        for ($j=0; $j < sizeof($scorecards); $j++) {
+                            $averagescore += ($scorecards[$j]['total_score']);
+                        }
+                        $staff[$i]['averagescore'] = $averagescore/sizeof($scorecards);
+                    }
+                }
+            }
+            else{
+                $staff = Staff::where('department', '=', Auth::user()->department)->where('role', '>', Auth::user()->role)->with('role', 'department','scorecard')->get()->toArray();
+                $departments = Department::where('id', '=', Auth::user()->department)->get()->toArray();
+                for ($i=0; $i<sizeof($staff); $i++) {
+                    $averagescore=0;
+                    $staff[$i]['averagescore'] = 0;
+                    $scorecards = ScoreCard::where('staff','=',$staff[$i]['id'])->get()->toArray();
+        
+                    if (sizeof($scorecards)>0){
+                        for ($j=0; $j < sizeof($scorecards); $j++) {
+                            $averagescore += ($scorecards[$j]['total_score']);
+                        }
+                        $staff[$i]['averagescore'] = $averagescore/sizeof($scorecards);
+                    }
+                }
+
+            }
         }else{
             # Permission denied
             return redirect()->back()
                 ->with('error', 'Permission Denied');
         }
-        $scoredStaff = Staff::with('scorecard')->get()->toArray();
-        
-        
-        
-        for ($i=0; $i<sizeof($scoredStaff); $i++) {
-            $averagescore=0;
-            $scoredStaff[$i]['averagescore'] = 0;
-            $scorecards = ScoreCard::where('staff','=',$scoredStaff[$i])->get()->toArray();
 
-            if (sizeof($scorecards)>0){
-                for ($j=0; $j < sizeof($scorecards); $j++) {
-                    $averagescore += ($scorecards[$j]['total_score']);
-                }
-            $scoredStaff[$i]['averagescore'] = $averagescore/sizeof($scorecards);
-            }
-        }
+
+        
+        // $scoredStaff = Staff::with('scorecard')->get()->toArray();
+        
+        // for ($i=0; $i<sizeof($scoredStaff); $i++) {
+        //     $averagescore=0;
+        //     $scoredStaff[$i]['averagescore'] = 0;
+        //     $scorecards = ScoreCard::where('staff','=',$scoredStaff[$i]['id'])->get()->toArray();
+
+        //     if (sizeof($scorecards)>0){
+        //         for ($j=0; $j < sizeof($scorecards); $j++) {
+        //             $averagescore += ($scorecards[$j]['total_score']);
+        //         }
+        //         $scoredStaff[$i]['averagescore'] = $averagescore/sizeof($scorecards);
+        //     }
+        // }
         
         return view('staff.staff')
             ->with('staff', $staff)
-            ->with('scoredStaff',$scoredStaff)
+            // ->with('scoredStaff',$scoredStaff)
             ->with('roles', Role::where('id', '>=', Auth::user()->role)->get()->toArray())
             ->with('departments', $departments);
     }
