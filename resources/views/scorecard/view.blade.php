@@ -30,8 +30,8 @@
                                     <th>Metric</th>
                                     <th>Actual</th>
                                     <th>Target</th>
-                                    <th>Weight %</th>
-                                    <th>Rating %</th>
+                                    <th >Weight %</th>
+                                    <th>Score %</th>
                                     
                                     
                                 </tr>
@@ -47,7 +47,7 @@
                                             <td>Actual</td>
                                             <td>Target</td>
                                             <td>Weight</td>
-                                            <td>Rating</td>
+                                            <td>Score</td>
                                             
                                             @for($j=0; $j<sizeof($objectives[$i]['objectives']); $j++) 
                                                 <tr >
@@ -85,19 +85,27 @@
                                                                 @if ($l != sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']) - 1)
                                                                     <tr><td></td><td></td>
                                                                 @endif
-                                                                
+                                                                @if($j <= sizeof($objectives[$i]['objectives']))
+                                                                    <div style="display:none;">{{ $scorecard['objective_weight'] += $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['weight'] }}</div>
+                                                                @endif
+                                                                @if($l <= sizeof($objectives[$i]['objectives'][$j]['measures'][$k]['metrics']))
+                                                                    <div style="display:none;">{{ $scorecard['objective_score'] += round(($objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['score'] * $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['weight']) / $objectives[$i]['objectives'][$j]['measures'][$k]['metrics'][$l]['target'], 2) }}</div>
+                                                                @endif
                                                             @endfor
                                                             </tr>
                                                     @endfor
                                                     </tr>
                                                 </tr>
                                             @endfor
+                                            <tr style="background-color:#FFA500;"><td colspan="5"></td><td colspan="" style="color:#0a151d"><b>Section Weight:<br> <span style="font-size:1.5rem;color:#666633;">{{ $scorecard['objective_weight']  }} %</span></b></td><td colspan="" style="color:#0a151d"><b>Section Score: <span  style="font-size:1.5rem;color:#ffffff;">{{ $scorecard['objective_score']  }}% </span></b></td></tr>
+                                            <div style="display:none;">{{ $scorecard['objective_weight']= 0  }}</div>
+                                            <div style="display:none;">{{ $scorecard['objective_score']= 0  }}</div>
                                         </tr>
 
                                     @endfor
                                     
                                         <tr style="background-color:#343a40; color:#fff !important;">
-                                            <td colspan="7" style="text-align: right; font-weight: 800"><h5 style="color:#fff;">Total Score:<b> {{ round($scorecard['total_score'], 2) }} %</b></h5></td>
+                                            <td colspan="7" style="text-align: right; font-weight: 800"><h5 style="color:#fff;">Total Score:<b> <span style="font-size:1.8rem;">{{ round($scorecard['total_score'], 2) }} %</span></b></h5></td>
                                         </tr> 
                             </tbody>
                             <tfoot>

@@ -33,7 +33,7 @@ class DepartmentController extends Controller
 
 
 
-        return view('departments')
+        return view('department.departments')
             ->with('department', $department);
     }
 
@@ -47,5 +47,6 @@ class DepartmentController extends Controller
         return redirect()->route('show.departments')
             ->with('success', 'department inserted successfully.');
     }
+
 }
 

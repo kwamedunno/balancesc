@@ -34,6 +34,8 @@ Route::post('/scorecards/createmeasure','ScoreCardsController@createMeasure')->n
 Route::post('/scorecards/createmetric','ScoreCardsController@createMetric')->name('create.metric');
 Route::post('/scorecards/editcard','ScoreCardsController@editScoreCard')->name('edit.scorecard');
 
+Route::get('/scorecards/addyear','ScoreCardsController@addYear')->name('addyear');
+
 
 //Departments
 Route::get('/departments','DepartmentController@showDepartment')->name('show.departments');
@@ -41,13 +43,13 @@ Route::post('/departments','DepartmentController@addDepartment')->name('add.depa
 
 //Staff
 Route::get('/staff','StaffController@showStaff')->name('show.staff');
+Route::get('/staff/department/{id}','StaffController@showDepartmentStaff')->name('show.department.staff');
 Route::post('/staff','StaffController@addStaff')->name('add.staff');
 Route::get('/staff/delete/{id}','StaffController@deleteStaff')->name('delete.staff');
 Route::post('/staff/edit','StaffController@editStaff')->name('edit.staff');
 Route::get('/staff/profile/{id}','StaffController@showProfile')->name('show.profile');
 Route::get('/staff/loggedprofile','StaffController@showLoggedUserProfile')->name('show.logged.profile');
 
-Route::get('/staff/restore','StaffController@restoreStaff');
 
 
 

@@ -16,6 +16,7 @@ use App\ScoreCardMeasure;
 use App\ScoreCardObjective;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class ScoreCardsController extends Controller
@@ -34,29 +35,31 @@ class ScoreCardsController extends Controller
             if (Auth::user()->role == 1) {
             # show all
             $scorecards = ScoreCard::with('staff.department', 'lastUpdatedBy')->get()->toArray();
-        }elseif(Auth::user()->role == 2){
-            # show only scorecards of staff in that department and having equal or higher permissions
-            $ids = Staff::where('role', '>=', Auth::user()->role)->where('department', '=', Auth::user()->department)->get('id')->toArray();
-
-            $scorecards = ScoreCard::whereIn('staff', $ids)->with('staff.department', 'lastUpdatedBy')->get()->toArray();
-        }
-        elseif(Auth::user()->role == 3){
-            $id = Staff::where('role','=',Auth::user()->role)->where('department','=', Auth::user()->department)->where('name','=',Auth::user()->name)->get('id')->toArray();
             
-            $scorecards = ScoreCard::whereIn('staff', $id)->with('staff.department', 'lastUpdatedBy')->get()->toArray();
-        }
-        else{
-            # Permission denied
-            return redirect()->back()
-                ->with('error', 'Permission Denied');
-        }
+            }
+            elseif(Auth::user()->role == 2){
+                # show only scorecards of staff in that department and having equal or higher permissions
+                $ids = Staff::where('role', '>=', Auth::user()->role)->where('department', '=', Auth::user()->department)->get('id')->toArray();
+
+                $scorecards = ScoreCard::whereIn('staff', $ids)->with('staff.department', 'lastUpdatedBy')->get()->toArray();
+            }
+            elseif(Auth::user()->role == 3){
+                $id = Staff::where('role','=',Auth::user()->role)->where('department','=', Auth::user()->department)->where('name','=',Auth::user()->name)->get('id')->toArray();
+                
+                $scorecards = ScoreCard::whereIn('staff', $id)->with('staff.department', 'lastUpdatedBy')->get()->toArray();
+            }
+            else{
+                # Permission denied
+                return redirect()->back()
+                    ->with('error', 'Permission Denied');
+            }
 
 
-        return view('scorecards')
-                ->with('scorecards', $scorecards);
+            return view('scorecards')
+                    ->with('scorecards', $scorecards);
 
-        } 
-        
+            } 
+            
         catch (\Exception $e) {
 
             Log::error("\t".$e->getTraceAsString());
@@ -68,19 +71,27 @@ class ScoreCardsController extends Controller
 
     }  
 
+    //Showing a single scorecard
     public function showViewScoreCard($id){
 
         $objectives = ScoreCardObjective::where('parent',null)->where('score_card', '=', $id)->with('actual','objectives.actual', 'objectives.measures.actual', 'objectives.measures.metrics.actual')->get()->toArray();
         $scorecard = ScoreCard::where('id','=', $id)->with('staff')->first()->toArray();
         $scorecard['period'] = date('F Y', strtotime("01-".$scorecard['period']));
         $metrics = ScoreCardMetric::where('scorecard', '=', $id)->orderBy('id', 'asc')->get()->toArray();
-        $scorecard['total_score'] = 0;
+        // $scorecard['total_score'],$scorecard['finance_total'],$scorecard['customer_total'],$scorecard['process_total'],$scorecard['people_total'],$scorecard['innovation_total'] = 0;
+        // $finance_total = ScoreCardMetric::where('')
         $scorecard['target_weight'] = 0;
+        $scorecard['objective_weight']=0;
+
         $entire_staff = Staff::with('role','department')->get()->toArray();
-        
+
+        $scorecard['total_score']=0;
         for ($i=0; $i < (sizeof($metrics)) ; $i++) { 
             $scorecard['total_score'] += ($metrics[$i]['score'] * $metrics[$i]['weight']) / $metrics[$i]['target']; //score
         }
+
+        $scorecard['objective_score']=0;
+        
         $savedcard = ScoreCard::where('id','=',$id)->first();
         $savedcard->total_score = $scorecard['total_score'];
         $savedcard->save();
@@ -177,6 +188,7 @@ class ScoreCardsController extends Controller
         $scorecard->period = $request->month."-".$request->year;
         $scorecard->approval = "no";
         $scorecard->last_updated_by = Auth::user()->id;
+        $scorecard->year = $request->year;
         $scorecard->save();
         
 
@@ -330,5 +342,14 @@ class ScoreCardsController extends Controller
 
     }
 
-
+    //adding yer values to scorecard table- needed just once
+    public function addYear(){
+        $sc = ScoreCard::all();
+            for ($i=0; $i < sizeof($sc); $i++) { 
+                $sc[$i]->year = \Carbon\Carbon::parse('01-'.$sc[$i]->period)->format('Y');
+                $sc[$i]->save();
+            }
+            
+    }
+    
 }

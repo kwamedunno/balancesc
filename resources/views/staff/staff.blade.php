@@ -51,7 +51,7 @@
                                     <th>Email</th>
                                     <th>Department</th>
                                     <th>Role</th>
-                                    <th>Average</th>
+                                    <th>Year Avg.</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

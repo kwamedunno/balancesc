@@ -52,7 +52,7 @@
                                         <td>{{ $scorecards[$i]['id'] }}</td>
                                         <td>{{ $scorecards[$i]['staff']['name'] }}</td>
                                         <td>{{ $scorecards[$i]['staff']['department']['description'] }}</td> 
-                                        <td width="70px;">{{ $scorecards[$i]['period'] }}</td> 
+                                        <td width="70px;">{{ \Carbon\Carbon::parse('01-'.$scorecards[$i]['period'])->format('M Y') }}</td> 
                                         <td>{{ $scorecards[$i]['last_updated_by']['name'] }} at {{ $scorecards[$i]['updated_at'] }}</td> 
                                         <td><a href="{{ route('show.view.scorecard', $scorecards[$i]['id']) }}"><button class="btn btn-info" style="padding: 0.3rem 0.5rem;margin-right:1.5rem;"><i class="la la-eye"></i></button></a>
                                             @if((Auth::user()->role)==1)
