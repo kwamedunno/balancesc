@@ -55,10 +55,23 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <div class="col-md-12 mb-2 row-block" style="margin-bottom:40px;">
-                                        <a class="btn btn-lg btn-block" style="background-color:#A9CF38;color:#ffffff;border-color:#d8d8d8" href="{{ url('auth/google') }}">
-                                            <strong>Login With Google</strong>
-                                        </a>
+                                    <div class="card-body pt-0">
+                                        <form class="form-horizontal form-simple" action="{{ route('process.login') }}" method="POST">
+                                           @csrf
+                                            <fieldset class="form-group position-relative has-icon-left mb-0">
+                                                <input type="email" class="form-control" name="username" id="user-name" placeholder="Your E-mail" required>
+                                                <div class="form-control-position">
+                                                    <i class="ft-user"></i>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input type="password" class="form-control" name="password" id="user-password" placeholder="Enter Password" required>
+                                                <div class="form-control-position">
+                                                    <i class="la la-key"></i>
+                                                </div>
+                                            </fieldset>
+                                            <button type="submit" class="btn  btn-block" style="background-color:#28a745; border-color:#28a745; color:#fff"><i class="ft-unlock"></i> Login</button>
+                                        </form>
                                     </div>
                                 </div>
                                 
@@ -70,6 +83,7 @@
             </div>
         </div>
     </div>
+    <!-- END: Content-->
     <!-- END: Content-->
 
 
